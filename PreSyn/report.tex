@@ -1,0 +1,68 @@
+%%This is a very basic article template.
+%%There is just one section and two subsections.
+\documentclass[12pt]{book}
+\usepackage{iitbtitle}
+\usepackage[font={small,it}]{caption}
+\usepackage{textcomp}
+\usepackage{subcaption}
+\usepackage{a4wide}
+\usepackage{multirow}
+\usepackage{anysize}
+\usepackage{iitbcs}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{comment}
+% \usepackage{psfig}
+\usepackage{tabls}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{url}
+\usepackage[pagebackref=true,breaklinks=true,colorlinks,bookmarks=false]{hyperref}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\setlength{\floatsep}{20pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{20pt plus 2pt minus 2pt}
+\setlength{\intextsep}{5pt plus 2pt minus 2pt}
+\usepackage{color}
+
+
+\marginsize{2.5cm}{2.5cm}{1cm}{1.5cm}
+\def\baselinestretch{1.15}
+
+\newcommand\INPUT{\item[\textbf{Input:}]}
+\newcommand\OUTPUT{\item[\textbf{Output:}]}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\etal{\emph{et al}\onedot}
+\begin{document}
+
+
+%\baselineskip 20pt
+%The definitions
+\def\title{Quadcopter Travel and Imaging}
+\def\what{Pre-Synospis Seminar Report}
+\def\degree{Doctor of Philosophy}
+\def\who{Meghshyam G. Prasad}
+\def\roll{124058001}
+\def\guide{Prof. Sharat Chandran \\ Prof. Michael Brown}
+\titlpage
+\def\bsq{\begin{flushright} $\blacksquare$\\ \end{flushright}}
+\def\tab{\hspace{5mm}}
+
+\chapter*{Abstract}
+\pagenumbering{roman}
+\addcontentsline{toc}{chapter}{Abstract}
+\tableofcontents
+\pagenumbering{arabic}
+\include{intro}
+
+\include{vacantSpaces}
+\include{multiplanar}
+\include{fiducial}
+\bibliographystyle{ieee}
+\bibliography{egbib}
+\addcontentsline{toc}{chapter}{References}
+\end{document}
