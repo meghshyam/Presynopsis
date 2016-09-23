@@ -10,17 +10,39 @@ aerial surveillance, tracking, transport, photography Unmanned Aerial Vehicles
 (UAV) more familiarly known as drones are of great use.
 \section{Background and Motivation}
 In India, drones have been reportedly used in search and rescue operation in
-flood hit areas. Drones have been also used for military purposes e.g.,
+flood hit areas. Drones have been used also for military purposes e.g.,
 surveillance to restrict infiltration in border areas. Still there are lot
 of opportunities in various areas such as agriculture(for pest control),
 public health (water puddle detection, stacked garbage detection), inspection
 of large structure (dams, nuclear reactors, old temple restoration) etc..
 
-There are two main challenges in such applications. First, proper navigation
-and control of the drone, and second, analysis of images captured from the
-camera to understand the scene. 
+There are two main challenges in using drones for such applications. One
+of them is proper navigation and control of the drone, and another is analysis
+of images captured from the camera to understand the scene. Developed countries
+like US have been using military grade drones with superior technology and point
+precision in different fields. But as these drones are very expensive, their use
+is limited in developing countries. Also, as these drones use GPS for navigation
+we cannot use them in indoor scenes. Even if GPS signal is available, we cannot
+rely only on GPS for navigation of drones due to various reasons (GPS jamming,
+spurious GPS signals). We may think of navigating drone manually in such cases.
+But, it will be cumbersome and prone to human errors. Hence, there is need of
+developing a stable technique for autonomous navigation and control of drones
+in various scenarios.
+
+Manual inspection of captured videos is very time consuming monotonic process
+which makes it ineffective. So we need to develop an efficient algorithm to
+process the video and output desirable representation of the input scene. For
+example, if we are inspecting dam for cracks, we need to ensure that all small
+cracks are detected along with their respective positions. This requires full
+panoramic view of the dam constructed from closeups of the patches. But large
+featureless regions of surfaces like dam challenges use of homography based
+stitching to create the panorama. So there is requirement of a method which can
+incorporate additional information available from drone to do mosaicing of
+scenes with vacant spaces.
+
+
 \section{Problem Statement}
-The objective of the thesis is to
+The objective of the thesis is to 
 \section{Contributions}
 \subsection{Mosaicing Scenes with Vacant Spaces using Quadcopter}
 \subsection{Autonomous Imaging of Multiplanar Regions through Quadcopter}

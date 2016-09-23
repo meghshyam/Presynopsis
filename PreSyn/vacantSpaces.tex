@@ -10,7 +10,7 @@ the appropriate warps to register the images together.
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{figures/teaser.pdf}
-  \caption{ \label{fig:teaser} The long range photograph of a scene
+  \caption[Overview]{ \label{fig:teaser} The long range photograph of a scene
     taken from an SLR camera is shown in top right.  When such a scene
     is probed by a quadcopter, it results in the input images shown on
     the left (color balance is different from the SLR camera).  The
@@ -154,8 +154,8 @@ this problem is shown in Figure~\ref{fig:schematic}.
   \includegraphics[width=0.8\textwidth]{figures/indoor}\\
   \includegraphics[width=0.8\textwidth]{figures/stereoOverlap}\\
 
-  \caption{ \label{fig:schematic} Problem definition. (Top) Vacant spaces
-    are encountered in various scenes.  When individual portions are
+  \caption[Problem definition]{ \label{fig:schematic} Problem definition. (Top)
+  Vacant spaces are encountered in various scenes.  When individual portions are
     captured by a quadcopter, how does one create the complete mosaic
     given that common features are either not available, or
     confusing? (Bottom) Simplified reduction of the problem to a geometrical structure.
@@ -171,7 +171,7 @@ images acquired from different positions into a mosaic.
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\textwidth]{figures/Workflow} 
-  \caption{ \label{fig:workflow} Overview: Input imagery is
+  \caption[Workflow]{ \label{fig:workflow} Overview: Input imagery is
     systematically acquired (top left) by a quadcopter.  In the next
     step, interesting images are found by clustering the video into
     regions based on positional data.  A graph is constructed using
@@ -253,8 +253,8 @@ information is transmitted via WiFi to a host computer).
 \begin{figure}[t!]
   \centering
   \includegraphics[width=0.8\textwidth]{figures/selection} 
-  \caption{ \label{fig:selection} We align the image stream with IMU
-    data, and then transform the video into a set of interesting
+  \caption[Selection of Images]{ \label{fig:selection} We align the image stream
+  with IMU data, and then transform the video into a set of interesting
     images with a clustering algorithm.}
 \end{figure}    
 
@@ -296,8 +296,8 @@ Figure~\ref{fig:graph}.
 \begin{figure}[t!]
   \centering
   \includegraphics[width=\textwidth]{figures/graphCreation} 
-  \caption{ \label{fig:graph} Interesting images acquired are
-    segmented and individual (mini-panoramas) are constructed. These
+  \caption[Creation of Mini-panoramas]{ \label{fig:graph} Interesting images
+  acquired are segmented and individual (mini-panoramas) are constructed. These
     are then later combined into the desired super-panoramas using IMU data.}
 \end{figure}    
 
@@ -325,8 +325,8 @@ Figure~\ref{fig:stereo}).
   \centering
   \includegraphics[width=0.8\textwidth]{figures/move} \\
   \includegraphics[width=0.8\textwidth]{figures/stereo} 
-  \caption{ \label{fig:stereo} (Top) The virtual picture as seen from position
-  B' is computed using Equation~\ref{eq:moveRelation} from the real picture
+  \caption[Creation of Super-panoramas]{ \label{fig:stereo} (Top) The virtual
+  picture as seen from position B' is computed using Equation~\ref{eq:moveRelation} from the real picture
     taken from B.  (Bottom) Using the stereo disparity, calculated from the baseline 
    width b and depth Z',  it is possible to depict the composite scene obtained from both A
   and B' (from the view point of A).}
@@ -364,8 +364,8 @@ depth of B.)
 \begin{figure}[h]
 \includegraphics[width=0.48\textwidth]{images/left}
 \includegraphics[width=0.48\textwidth]{images/right}
-\caption{Candidate images for a super-panorama taken from different
-  depths. For context, see Fig.~\ref{fig:results}.  These images are
+\caption[Example of super-panorama]{Candidate images for a super-panorama taken
+from different depths. For context, see Fig.~\ref{fig:results}.  These images are
   `reference` images (spanning  tree center) of individual  mini-panoramas.}
 \label{fig:exmaple}
 \end{figure}
