@@ -18,13 +18,12 @@ there is no one single magic bullet to tackle the disease.
 Our work, started prior to the announcement of ``Project
 Premonition,'' is similar to that of \cite{Microsoft15}.  Instead of
 attempting to destroy the mosquito, we seek to detect the reason for
-the increased outbreak, especially in urban areas.  The work reported
-in this paper complements that of \cite{Microsoft15} --- the goal in \cite{Microsoft15}
-is to ``catch wild mosquitoes'' (typically in the outfield) by
-creating novel mosquito traps, and then to test mosquitoes for
-pathogens. New traps are placed by drones, and retrieved by drones.
-In contrast, this paper emphasizes the need for identifying the
-location of these traps.  
+the increased outbreak, especially in urban areas.  Our work complements that
+of \cite{Microsoft15} --- the goal in \cite{Microsoft15} is to ``catch wild
+mosquitoes'' (typically in the outfield) by creating novel mosquito traps, and
+then to test mosquitoes for pathogens. New traps are placed by drones, and
+retrieved by drones. In contrast, we emphasize the need for
+identifying the location of these traps.  
 
 One of the major reasons behind the growth of mosquitoes is the
 continuous existence of \emph{water puddles} around residencies in
@@ -50,10 +49,9 @@ typical rooftop on campus (c) Earlier method \cite{rankin2004daytime} applied, a
 is that it is specular in nature, and acts like a mirror.  Water is
 like a chameleon changing its color depending on the environment, and
 there is no easy way of saying ``this is water'' based on its
-appearance. In this paper, we propose the use of an old paradigm of
+appearance. In this work, we propose the use of an old paradigm of
 optical flow for the novel application to stagnant water detection.
 We couple it with a modern SVM-based method of classification.
-Results shown in this paper are convincing.
 
 \textbf{Related Work} The method in ~\cite{santana12} for detection of
 water relies on the chaotic nature of water's dynamic texture to
@@ -250,16 +248,18 @@ in Fig.~\ref{fig:workflow}.
 All our experiments have been completed with the inexpensive consumer
 quadcopter called Parrot's AR Drone. We remark that one should not
 compare expensive military grade drones with such inexpensive drones.
-For the purpose of showing the efficacy of this paper, we also took a
+For the purpose of showing the efficacy of this work, we also took a
 picture of the scene from a distance with a 5 mega-pixel camera for
 the reader to better understand the scene.  We covered urban places
 such as terraces, constructions sites, building backyards,
 pumping stations, and so on.  We have captured around eight different
 types of datasets, each having around two-three minutes of video
-(around 3000 frames each). Due to page restriction, and file size
-restriction, in this paper, as well as in the
-supplementary material, we have shown only representative frames from
-captured videos. Frames not having any stagnant water are not shown. 
+(around 3000 frames each). 
+
+%Due to page restriction, and file size
+%restriction, in this paper, as well as in the
+%supplementary material, we have shown only representative frames from
+%captured videos. Frames not having any stagnant water are not shown. 
 % Please see
 % the supplementary material for additional results on remaining
 % datasets as well as sample video captured through quadcopter.
@@ -315,7 +315,7 @@ So, darker the red tinge, higher the confidence in detected water regions. \text
 
 Earlier in the introduction, we emphasized the need for detection of
 stagnant water in hard to access areas. In the remaining parts of the
-paper we proposed a novel technique using a quadcopter.
+chapter we proposed a novel technique using a quadcopter.
 The method proposed involved assigning a probabilistic measure to
 image patches in input image frames, indicating likelihood of it being
 a puddle. The measure was obtained by combining scores from an
