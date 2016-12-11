@@ -104,45 +104,6 @@ to the stereo problem and are thus able to complete the panorama.
 % experimental results. (Additional results are available in
 % supplementary material.)  The final section discusses future work.
 
-\section{Related Work}
-
-Panoramic image stitching (alternatively, image mosaicing) is a
-well-studied problem in the field of computer vision.  Representative
-works include~\cite{Milgram1975}, \cite{Milgram1977}, \cite{Capel},
-\cite{Szeliski1997} \cite{Brown07} \cite{Brown03}.  A full discussion
-on related works is outside the scope of this work, readers are
-referred to~\cite{Szeliski05imagealignment} for an excellent survey.
-Given the maturity of this area, there are various freeware as well as
-commercial software available for performing image stitching; most
-notable are AutoStitch \cite{autostitch}, Microsoft\textsc{\char"13}s Image
-Compositing Editor \cite{ICE}, and Adobe\textsc{\char"13}s Photoshop
-\cite{photoshop}.
-
-All of these methods are based on a similar strategy of finding
-features in each image, matching these features between images, and
-then computing pairwise image warps to align them together.  A 
-bundle adjustment is often applied to globally refine the alignment.
-All of the aforementioned methods assume the imaged scene is planar or
-that the camera has been rotated carefully around its center of
-projection to avoid parallax.
-
-Brown \etal \cite{Brown05} have used a new type of invariant features
-located at Harris corners in discrete scale-space and oriented using a
-blurred local gradient for stitching. Eden \etal \cite{Eden} were
-able to stitch images with large exposure difference as well as large
-scene motion into single HDR quality image without using any
-additional camera hardware.
-
-All of the image mosaicing methods work only when there is an
-``intersection'' in feature space of images to be stitched. When there
-are ``gaps'' (either physical or due to lack of features) between
-images to be stitched it is not clear how to perform the
-stitching. Structure from Motion methods also rely on overlap of
-features and fail when images have gaps. In this work, we discuss how
-to use the available IMU data that accompanies our input images to
-help overcome these problems.
-
-
 \section{Methodology}
 
 The goal of this work is to compute a panorama of a scene lying on
