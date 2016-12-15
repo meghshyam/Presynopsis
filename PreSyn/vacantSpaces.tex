@@ -9,7 +9,7 @@ the appropriate warps to register the images together.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.8\textwidth]{figures/teaser.pdf}
+  \includegraphics[width=0.8\textwidth]{figures/vacantSpaces/teaser.pdf}
   \caption[Overview]{ \label{fig:teaser} The long range photograph of a scene
     taken from an SLR camera is shown in top right.  When such a scene
     is probed by a quadcopter, it results in the input images shown on
@@ -112,8 +112,8 @@ this problem is shown in Figure~\ref{fig:schematic}.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.8\textwidth]{figures/indoor}\\
-  \includegraphics[width=0.8\textwidth]{figures/stereoOverlap}\\
+  \includegraphics[width=0.8\textwidth]{figures/vacantSpaces/indoor}\\
+  \includegraphics[width=0.8\textwidth]{figures/vacantSpaces/stereoOverlap}\\
 
   \caption[Problem definition]{ \label{fig:schematic} Problem definition. (Top)
   Vacant spaces are encountered in various scenes.  When individual portions are
@@ -131,7 +131,7 @@ images acquired from different positions into a mosaic.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\textwidth]{figures/Workflow} 
+  \includegraphics[width=\textwidth]{figures/vacantSpaces/Workflow} 
   \caption[Workflow]{ \label{fig:workflow} Overview: Input imagery is
     systematically acquired (top left) by a quadcopter.  In the next
     step, interesting images are found by clustering the video into
@@ -213,7 +213,7 @@ information is transmitted via WiFi to a host computer).
 
 \begin{figure}[t!]
   \centering
-  \includegraphics[width=0.8\textwidth]{figures/selection} 
+  \includegraphics[width=0.8\textwidth]{figures/vacantSpaces/selection} 
   \caption[Selection of Images]{ \label{fig:selection} We align the image stream
   with IMU data, and then transform the video into a set of interesting
     images with a clustering algorithm.}
@@ -256,7 +256,7 @@ Figure~\ref{fig:graph}.
 
 \begin{figure}[t!]
   \centering
-  \includegraphics[width=\textwidth]{figures/graphCreation} 
+  \includegraphics[width=\textwidth]{figures/vacantSpaces/graphCreation} 
   \caption[Creation of Mini-panoramas]{ \label{fig:graph} Interesting images
   acquired are segmented and individual (mini-panoramas) are constructed. These
     are then later combined into the desired super-panoramas using IMU data.}
@@ -284,8 +284,8 @@ the forest corresponding to area A and area B of the scene (see
 Figure~\ref{fig:stereo}). 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.8\textwidth]{figures/move} \\
-  \includegraphics[width=0.8\textwidth]{figures/stereo} 
+  \includegraphics[width=0.8\textwidth]{figures/vacantSpaces/move} \\
+  \includegraphics[width=0.8\textwidth]{figures/vacantSpaces/stereo} 
   \caption[Creation of Super-panoramas]{ \label{fig:stereo} (Top) The virtual
   picture as seen from position B' is computed using Equation~\ref{eq:moveRelation} from the real picture
     taken from B.  (Bottom) Using the stereo disparity, calculated from the baseline 

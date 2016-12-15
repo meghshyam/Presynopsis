@@ -48,7 +48,7 @@ results are shown in Figure~\ref{fig:sac3}(d).
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.87\linewidth]{figures/ValidationResult}
+\includegraphics[width=0.87\linewidth]{figures/vacantSpaces/ValidationResult}
 \caption[Validation Result: Lady]{ (a) Uniformly sampled images from an outdoor
 video expedition.  (b) Output of the state of the art photo stitchers
   (left:AutoStitch, right:Adobe Photoshop CS6) on uniformly time
@@ -93,7 +93,7 @@ Figure~\ref{fig:indoor_results}(e) clearly stands out in comparison.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{figures/indoor_results}
+\includegraphics[width=\linewidth]{figures/vacantSpaces/indoor_results}
 \caption[Result: Cars]{ (a) Pruned images from the quadcopter video using our
   saliency algorithm of (b) an indoor scene. This long range photograph
   has been captured separately by a smartphone camera only for
@@ -111,7 +111,7 @@ Figure~\ref{fig:indoor_results}(e) clearly stands out in comparison.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.86\linewidth]{figures/orange_blue}
+\includegraphics[width=0.86\linewidth]{figures/vacantSpaces/orange_blue}
 \caption[Result: Outdoor Exhibition]{(a) An outdoor scene captured by a standard
 camera in an exhibition. The approach to the area is normally cordoned off and one
   needs permission to get a quadcopter to take the picture.  Notice a
@@ -137,26 +137,27 @@ state of the art stitchers with the output of our algorithm. Note that
 AutoStitch is getting confused by too many matching features. 
 Please see supplementary material for results on other indoor as well as outdoor datasets.
 
-% Figure \ref{fig:results2} shows comparison of outputs of state of the art
-% stitchers with output of our algorithm on another dataset.
+Figure \ref{fig:results2} shows comparison of outputs of state of the art
+stitchers with output of our algorithm on another dataset.
 
-% \begin{figure}[h!]
-% \centering
-% \includegraphics[width=0.8\linewidth]{figures/Purple_red}
-% \caption{(a) Another outdoor scene captured by a standard camera in an
-%   exhibition. The approach to the area is normally cordoned off and one
-%   needs permission to get a quadcopter to take the picture.  Notice a
-%   significant gap between the two posters.  (b) Pruned images from the
-%   quadcopter video using our saliency algorithm. (c) Output of
-%   AutoStitch on the selected images. The mosaic is not reasonable
-%   presumably because of the confusion in features. (d) Output of Adobe
-%   Photoshop CS6 on the selected images. The vacant space posed a
-%   problem to the feature matching algorithm, so instead of a mosaic,
-%   individual pieces were output as mini-panoramas (e) Our output on
-%   the selected images. We are able to join two posters (separated by
-%   vacant space) using IMU data.}
-% \label{fig:results2}
-% \end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{figures/vacantSpaces/Purple_red} 
+\caption[Result: Outdoor
+Exhibition 2]{(a) Another outdoor
+scene captured by a standard camera in an exhibition. The approach to the area is normally cordoned off and one
+  needs permission to get a quadcopter to take the picture.  Notice a
+  significant gap between the two posters.  (b) Pruned images from the
+  quadcopter video using our saliency algorithm. (c) Output of
+  AutoStitch on the selected images. The mosaic is not reasonable
+  presumably because of the confusion in features. (d) Output of Adobe
+  Photoshop CS6 on the selected images. The vacant space posed a
+  problem to the feature matching algorithm, so instead of a mosaic,
+  individual pieces were output as mini-panoramas (e) Our output on
+  the selected images. We are able to join two posters (separated by
+  vacant space) using IMU data.}
+\label{fig:results2}
+\end{figure}
 
 
 \subsection{Analysis}
