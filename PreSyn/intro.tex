@@ -19,22 +19,33 @@ quadcopters, octopcopters, etc.), those which cannot (mainly military drones
 used for surveillance, attack etc.). We are mainly interested in the first type due
 to ability to capture still photographs and videos. It enables us to do
 close inspection which is required in many applications. Currently, in the
-market variety of quadcopters are available from USD 100 to USD 3000. Each one
-has its own specialty. However, for autonomous navigation we require mainly
+market variety of quadcopters are available from USD 100 to USD 3000.
+Some of the models are shown in Figure~\ref{fig:quadcopters}.
+Each one has its own specialty. However, for autonomous navigation we require mainly
 three characteristics. First, it should have camera with good resolution (at
 least 1080 x 720 pixels). Second, it should be able to communicate with a
 computer through some protocol and third, we should be able to fly it indoors as
 well as outdoors.
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.98\linewidth]{figures/quadcopters}
+\caption[Different models of quadcopters]{Different models of
+quadcopters.[Picture Courtsey: Google image search]}
+\label{fig:quadcopters}
+\end{figure}
+
 Generally the first requirement is met in all quadcopters, but only a few
-quadcopters satisfy second and third requirements. E.g., DJI Phantom 4 has
-camera mounted on 3-axis gimbal coupled with gyroscope. It enables us to take
-very stable video while flying. But, till now there is no way to interface DJI
+quadcopters satisfy second and third requirements. E.g., DJI Phantom 4
+ has camera mounted on 3-axis gimbal coupled with gyroscope. It enables
+us to take very stable video while flying. But, till now there is no way to interface DJI
 Phantom 4 with a computer. We have to use joystick like control provided along
 with the quadcopter to manually navigate the quadcopter.
-Octcopters such as DJI S1000 have excellent flight control as well as
+Octcopters such as  DJI S1000 have excellent flight control as well as
 stability. But due to its bulky nature (weight around 11Kg), we can not use it
 in indoor areas.
+
+
 
 There are a few assembled quadcopter systems which became quite popular lately,
 e.g., team at the University of Pennsylvania have developed a series of
@@ -50,7 +61,7 @@ any computer can be connected. Parrot has also released SDK which is helpful to
 do interfacing with these quadcopters. As Parrot's Bebop was not publicly
 released until the end of 2015, we have used Parrot's ARDrone 2.0.
 
-\section{Thesis Motivation}
+\section{Motivation}
 %There are two main challenges in using drones for various applications.
 %One of them is proper navigation and control of the drone, and another is
 %the analysis of images captured by the camera to understand the scene.
@@ -93,7 +104,7 @@ The problem of autonomous navigation of quadcopters to image multiplanar
 surfaces with correctly classifying each quadcopter with the help of blur
 resilient fiducial, forms the basis of the work presented in this thesis.\\
 
-\noindent\textbf{Problem Statement:}
+\section{Problem Statement}
 \textit{We would like to autonomously navigate the quadcopter to image
 single as well as multiple planar regions and create a mosaic of the 
 scene. We would also like to identify quadcopter under motion robustly for
@@ -113,7 +124,7 @@ into following steps:
 Each of these steps is non-trivial and challenging as explained below. In this
 thesis, we deal with these steps by leveraging the information available from a quadcopter.  
 
-\section*{Challenges}
+\section{Challenges}
 The challenges which make our problem interesting to solve are as follows. 
 \begin{itemize}
   \item \textbf{Imaging scenes orthographically from close range:}
@@ -283,7 +294,7 @@ the best of our knowledge, we are the first to use quadcopter for:
 Specific contributions made to achieve this goal and to address the above
 mentioned challenges are:\\
 
-\noindent \textbf{Mosaicing Scenes with Vacant Spaces}\\
+\subsection{Mosaicing Scenes with Vacant Spaces}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.98\linewidth]{figures/vacantSpaces/Workflow}
@@ -353,7 +364,7 @@ In this experiment, the input stream had about 9000 input images.  Our selection
 	\label{fig:vacantSpaces_result}
 	\end{figure}
   
-\noindent \textbf{Autonomous Multiplanar Imaging through quadcopter}\\
+\subsection{Autonomous Multiplanar Imaging through quadcopter}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.98\linewidth]{figures/multiplanar/workflow}
@@ -414,7 +425,7 @@ our algorithm to get the final mosaicing output as shown in the bottom image.}
 	\label{fig:multiplanar_result}
 \end{figure}
 	
-\noindent \textbf{Blur Resilient Fiducials for Quadcopter}\\
+\subsection{Blur Resilient Fiducials for Quadcopter}
 
 \begin{figure}[h!]
 \centering
