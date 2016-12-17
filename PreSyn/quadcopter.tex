@@ -214,10 +214,15 @@ to use the available IMU data that accompanies our input images to
 help overcome these problems.
 
 \subsection{Mosaicing of Aerial Imagery}
-TODO. [MGP: I am unable to get 'good' papers on this topic, any suggestions.
-Basically I would like to contrast our work with other mosaicing work done on
-aerial images.]
-
+There is a lot of work happened in the area of mosaicing aerial images
+captured from UAVs as well as mosaicing of remotely sensed images from satellites.
+Representatives of these works are \cite{Yue, Yuanhang, Yahyanejad, Zhu}.
+These works use UAVs to image ground scenes from heights (minimum 100 ft.
+above from ground). However we are interested in imaging scenes from much closer
+distance for application such as inspection of walls or towers. Intricacies
+involved in imaging such surfaces from closer distance are different than aerial
+imaging. Hence, we \textit{cannot} use methods used for mosaicing of aerial 
+imagery in our problem.
 \section{Fiducial Markers and Tracking}
 Inexpensive quadcopter such as Parrot's AR Drone have very jerky movement. Hence,
 it is difficult to track the objects through quadcopter or even the quadcopter

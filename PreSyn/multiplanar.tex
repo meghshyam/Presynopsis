@@ -282,13 +282,59 @@ acceleration $\ddot{{\Psi}_t}$ and the roll/pitch rotational speed
 $\dot{{\Psi}_t}, \dot{{\Theta}_t}$ is estimated based on the state
 $\mathbf{x}_t$ and  active control command $\mathbf{u}_t$. Finally, using quadcopter's 
 estimated pose information, we update the 3D map of the environment.
- 
+
+\noindent\textbf{Scale Accuracy:} 
 Though \cite{engel}  gives 3D map of the environment, the scale accuracy is not
 ensured. It may lead to inaccurate 3D co-ordinates of the feature points. To
 ensure scale is 100 percent accurate, we moved the quadcopter autonomously in
 vertical direction (up and down) by fixed distance. The reason behind moving in
 vertical direction is that the sonar gives us very accurate height information 
 which is used to remove scale ambiguity.
+
+We have conducted a small experiment to demonstrate efficacy of our method to
+achieve 100\% scale accuracy. First, we initialized PTAM after
+taking off the quadcopter, moved the quadcopter to location (0, 0, 1) i.e., 1
+meter above ground, and finally landed it from the same location. Ideally,
+take-off location and land location should be same. However, due to errors in
+PTAM initialization as well as noise in IMU measurements, the distance between
+two locations will be non-zero. We use this distance as a measure of error. We also tried to imbalance the quadcopter, while it is at location (0, 0, 1), before landing to check its
+ability to come back to original position.
+
+Later, we repeated the experiment with one change, instead of using only PTAM
+initialization, we have autonomously moved the quadcopter up and down by fixed
+distance (1 meter) after PTAM initialization. Our summarized observations
+after ten runs in both cases are listed in Table~\ref{tab:ptamInit}.
+\begin{table}
+\centering
+\newcolumntype{C}{ >{\centering\arraybackslash} m{2cm} }
+\newcolumntype{D}{ >{\centering\arraybackslash} m{5cm} }
+\begin{tabular}{|D|C|C|C|C|}
+\hline
+Case & Avg. Scale Accuracy & Avg. Scale (in m) & Number of Iterations &
+Mean Error $\pm$ std. (in cm)\\
+\hline
+Only PTAM initialization & 0.524 & 1.2 & NA & 82.6 $\pm$ 10.73 \\
+\hline
+PTAM initialization with accuracy check & 1.0 & 2.33 & 3--4 & 13.2 $\pm3.6$\\
+\hline       
+\end{tabular}
+\caption[Effect of ensuring scale accuracy on pose estimation]{Effect of
+ensuring scale accuracy on pose estimation of quadcopter.
+First row shows that with only PTAM initialization, we do not get accurate pose.
+When we use our method to ensure the 100\% scale accuracy, we are much better in
+pose estimation. The scene used for this testing was 2.3 meters away from the
+quadcopter. As the estimated scale (2.33m) with our method is very close to the
+actual distance of the scene from quadcopter, generated 3D map will be also very
+accurate.}
+\label{tab:ptamInit}
+\end{table}
+Table~\ref{tab:ptamInit} clearly indicates that the pose estimate with only PTAM
+initialization is far off (around 85cm) from actual position\footnote{We also
+noted that sometimes quadcopter was not able to come anywhere near to (0, 0, 1)
+if we imbalance quadcopter prurposefully after PTAM initialization.}.
+However when we ensure scale accuracy the estimated pose is within 15 cms of
+actual location. The estimated scale is also very close to actual distance of
+the plane, if we use our method for ensuring 100\% scale accuracy.
 
 \begin{figure}[t!]
 \centering
@@ -673,7 +719,7 @@ shown in the bottom image.}
 \label{fig:resultFrontBack}
 \end{figure}
 
-\section{Summary}
+\section{Concluding remarks}
 We have developed an end-to-end application for autonomously imaging multiplanar
 regions using quadcopter. We have also developed an algorithm for `unrolling'
 the multiplanar scene using the fusion of IMU data and video captured from
@@ -688,5 +734,14 @@ the whole plane. Later, we stitch images for each plane to create mini-panorama.
 Finally, mini-panoramas are merged using positional information to form full panorama.
 Our method works in various setups like convex, concave as well as mixed.
 
-In the future, our method may be extended to cover any parametric surface in
-general.
+%In the future, our method may be extended to cover any parametric surface in
+%general.
+It is practically impossible to image very large multiplanar surface using
+just single quadcopter due to battery constraint. We can use multiple
+quadcopters in collaboration to overcome this limitation. However, we need to
+identify each quadcopter accurately to send proper commands. Identification of
+an moving object in unknown environment is a challenging task. Generally, 
+fiducial markers are placed on an object for tracking. Motion blur introduced
+due to swift movements of quadcopter causes problem in detection of current
+fiducials. We discuss the design of motion blur resilient fiducials as well as
+the detection of the same in next chapter.

@@ -331,7 +331,7 @@ depth of B.)
 \includegraphics[width=0.48\textwidth]{images/right}
 \caption[Example of super-panorama]{Candidate images for a super-panorama taken
 from different depths. For context, see Fig.~\ref{fig:results}.  These images are
-  `reference` images (spanning  tree center) of individual  mini-panoramas.}
+  `reference' images (spanning  tree center) of individual  mini-panoramas.}
 \label{fig:exmaple}
 \end{figure}
 
@@ -372,16 +372,18 @@ vacant spaces.  Vacant space relates to images in an input stream
 where there are not enough features for traditional mosaicing
 algorithms to estimate geometric warps to align the images.
 
-Our solution to this problem is to use an autonomous quadcopter which
+Our solution to this problem is to use a quadcopter which
 is capable of taking pictures.  The quadcopter has an inertial
 measurement unit that is capable of outputting approximate
 positions. Using this positional information, our algorithm selects an
 ``interesting'' subset of the video imagery.  This subset consists of
 pictures taken with a moving camera; we reduce the resulting
-problem of computing a mosaic by reduction to the stereo problem.  Our
+problem of computing a mosaic to the stereo problem.  Our
 method works on both indoor and outdoor scenes.
 
 Controlling a consumer-focused inexpensive quadcopter can be
 problematic; for instance the quadcopter could have severe yaw and
-roll.  For future work, vision based algorithms to control such
-quadcopters might be quite useful.
+roll.  We need a robust algorithm for autonmous navigation of quadcotper.
+We will discuss vision based algorithms to control such quadcopters autonomously
+in next chapter. We extend our work of mosacing scene on single planar
+surface to scene spread over multiple planar surface.
