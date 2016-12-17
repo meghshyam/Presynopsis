@@ -21,7 +21,7 @@ Final mosaicing output from this paper is shown in (c). Size of our output is
 \label{fig:teaser}
 \end{figure} 
 
-\begin{figure*}[htb]
+\begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{figures/multiplanar/ConcaveConvex}
 \caption[Imaging concave surfaces versus convex surfaces ]{(a) Imaging concave
@@ -30,7 +30,7 @@ sufficient to capture the whole surface. (b) While imaging convex surface, one
 need to change the position as well as the viewing angle. It makes the process
 of building homography based panorama  theoretically impossible.}
 \label{fig:convex_concave}
-\end{figure*}
+\end{figure}
 
 But practically, when we use such cameras for capturing panoramas, we do not
 get the close-up orthographic view of the scenes present at height or not
@@ -105,7 +105,7 @@ In case of multiplanar surfaces these problems worsen. In case of concave
 surfaces (Figure \ref{fig:convex_concave}(a)) if the camera is placed at the
 center of concave surface, imaging can be done from the single viewpoint.
 But if the plane is convex(Figure \ref{fig:convex_concave}(b)), viewpoints need
-to be changed with different angles . Quadcopter has to recognise multiple planes
+to be changed with different angles . Quadcopter has to recognize multiple planes
 in real-time and then change its direction for every plane before imaging the
 region so that it becomes normal to the plane.
 
@@ -148,7 +148,7 @@ them to get unrolled view which is more effective than the sparse 3D map.
 %using images streamed over Wi-Fi channel which are of lesser size ($640 \times
 %360$) than the size of images quadcopter stores on USB drive onboard i.e.,
 %$1280 \times 720$. So, the quality of output mosaic would also be lesser. If we
-%could synchronise the images stored on USB drive with the images streamed over
+%could synchronize the images stored on USB drive with the images streamed over
 %Wi-Fi channel we could possibly get higher quality mosaic.
 
 %The goal of this paper is to develop a method for autonomous control and
@@ -169,7 +169,7 @@ bounded region, the appropriate frame from each video is found and then given
 to a mosaicing algorithm.  Finally all mosaics are joined together to get a full
 unrolled view.
 
-\begin{figure*}[ht!]
+\begin{figure}[ht!]
 \centering
 \includegraphics[width=\textwidth]{figures/multiplanar/workflow}
 \caption[Overall Workflow]{Overview: (a) Input Scene to be imaged. (b) Feature
@@ -179,7 +179,7 @@ are calculated and overall path planning is done. (e) Videos are captured at
 each target position. From each captured video, the appropriate frame is
 found. (f) Individual mosaics are joined together to get final output.}
 \label{fig:workflow}
-\end{figure*}
+\end{figure}
 \subsection{ 3D map }
 We have used PTAM based method \cite{engel} to localize quadcopter as well as to
 create a 3D map of surrounding environment (See Figure \ref{fig:ptam_output}).
@@ -188,7 +188,7 @@ points are projected into the image using prior pose estimate. Next the camera
 pose is updated using some of the feature matches in the image. Final pose
 estimate is computed from all the matches found.
  
-The initial map built from stereo initialisation algorithm has an arbitrary
+The initial map built from stereo initialization algorithm has an arbitrary
 scale. Hence, there is need of scaling map to metric units. This is done by
 assuming that the camera is translated 10 cm between the stereo pair. This
 assumption may not be true in case of inexpensive quadcopter due to its jerky
@@ -201,7 +201,7 @@ pair of samples $\mathbf{x}_i, \mathbf{y}_i \in {\Re}^d$ where $\mathbf{x}_i$ is
 scaled translation calculated from PTAM system and $\mathbf{y}_i$ is distance
 measured by metric sensor at each interval. These pair of samples are related
 according to $\mathbf{x}_i \approx \lambda \mathbf{y}_i$. The scale $\lambda$ is
-estimated by minimising the negative log-likelihood\cite{engel}.  
+estimated by minimizing the negative log-likelihood\cite{engel}.  
 
 We could get the correct pose by  scaling  PTAM estimated pose. But we
 cannot rely only on PTAM for pose estimation as visual feedback may lag due to
@@ -290,7 +290,7 @@ vertical direction (up and down) by fixed distance. The reason behind moving in
 vertical direction is that the sonar gives us very accurate height information 
 which is used to remove scale ambiguity.
 
-\begin{figure*}[t!]
+\begin{figure}[t!]
 \centering
 \includegraphics[width=\linewidth]{images/3D_2D}
 \caption[Creation of 3D map]{Mapping of 3D locations to 2D image pixel locations
@@ -298,7 +298,7 @@ of feature points using PTAM. Left: Camera view showing 2D locations of detected
 Color coding indicates the coarseness level of detected features. Right: Mapview
 showing 3D locations of detected feature points.}
 \label{fig:ptam_output}
-\end{figure*}
+\end{figure}
 
 \subsection{Human Interaction}
 Next step after we get 3D map of the environment is getting desired area for
@@ -309,7 +309,7 @@ Hence, we  first fly the quadcopter at a sufficiently far distance from the
 surface. The distance should be such that the user can see the whole
 scene.We have created a user interface which enables the user to mark the region
 of interest.\\
-\begin{figure*}[t!]
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.31\linewidth]{images/UI_input}
 \includegraphics[width=0.31\linewidth]{images/UI_points_marked}
@@ -320,7 +320,7 @@ find out the nearest 3D point and show its projection (encircled blue pixels) on
 the image plane. Right: Once user finishes with clicking points, we find out its convex
 hull and show it in green convex polygon.}
 \label{fig:ui}
-\end{figure*}
+\end{figure}
 \textbf{User interface} User is shown the live video stream as seen through
 the quadcopter (Figure \ref{fig:ui}(Left)). Now, users can click points to
 mark their area of interest on the 2D screen. At backend we determine the
@@ -409,7 +409,7 @@ use images from all cells to create a mosaic of given bounded planar
 region. Cell area (width, height) is decided on the basis of amount of details required of the
 scene. E.g., if we need to probe our scene with minute details, we have to go
 nearer to the plane. So, in that case cell area is smaller. We need
-overlap between neighbour images for successful mosaicing. So, the amount of
+overlap between neighbor images for successful mosaicing. So, the amount of
 overlap between two cells is a function of the required overlap in feature space
 needed for stitching. Currently, overlap is set at thirty percent of cell area to deal
 even with sparser (containing very less feature points) images. Once we
@@ -454,7 +454,7 @@ also record ROS streams (image as well as navigation data) captured over Wi-Fi.\
 image i.e., an image with the minimum blur which is closest to the target point
 from 3 seconds HD video (approximately 90 images). But there is no positional data
 available on USB device. Navigational data and image streams captured over Wi-Fi help us
-in this process. First we synchronise these two streams using timestamp
+in this process. First we synchronize these two streams using timestamp
 information. It gives us an approximate position of each image from the image
 stream. Now we select the sharpest image among the images which are taken from
 positions in a close proximity of the specified point. Later we match each
@@ -469,7 +469,7 @@ videos, mosaic for each planar region is created using the method of creation of
 a mini-panorama presented in \cite{Prasad16}. In \cite{Prasad16}, first images
 are arranged in rectangular grid according to their positions. Here, as we already have grid
 information (created in path planning step), our first step is partially done.
-Later, we do feature matching among the neighbourhood images and create the
+Later, we do feature matching among the neighborhood images and create the
 maximum spanning tree using  the homography inliers as weight. Finally, mosaic
 i.e., mini-panorama is created by warping images according to the respective
 homography matrix (w.r.t. the  reference image).
@@ -529,7 +529,7 @@ mega-pixel camera to better understand the scene. We have implemented our
 algorithm in C++ using the OpenCV library (OpenCV 2.4.9).  Experiments were
 performed on a laptop with Intel Core i5 processor(@2.4GHz) and 8GB RAM.
 
-\subsection{Single Plane with Mutliple Visits}
+\subsection{Single Plane with Multiple Visits}
 We have first used our algorithm to image a single planar wall shown in
 Figure \ref{fig:resultLady}(Left). As the wall was too tall and it was not
 possible to see full wall in one flash due to shortage of space, we selected the
@@ -537,9 +537,10 @@ desired area in two steps as shown in Figure  \ref{fig:resultLady}(Middle). In p
 for top and 25 for bottom) positions were estimated to cover full region. Images
 captured from those positions are mosaiced using our algorithm to get final
 mosaicing output as shown in Figure \ref{fig:resultLady}(Right).
-\begin{figure*}
+
+\begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{figures/multiplanar/ladyResult.pdf}
+\includegraphics[width=\linewidth]{figures/multiplanar/ladyResult.pdf}
 \caption[Result: Single planar scene]{There is a 15 feet tall wall as shown in
 the long range photograph (left) which we would like to cover orthographically and with details. We cannot
 select the whole area in a single instance as we cannot go back to see whole
@@ -551,7 +552,7 @@ estimated to cover the full region. Images captured from those positions are
 mosaiced using our algorithm to get the final mosaicing output as shown in the
 right image.}
 \label{fig:resultLady}
-\end{figure*}
+\end{figure}
 
 \subsection{Multiple Planes}
 Our further experiments are done on various setups covering multiple planes.\\
@@ -564,20 +565,20 @@ from the right plane) positions were estimated to cover full region. Images capt
 from those positions are mosaiced using our algorithm to get the final mosaicing
 output as shown in the Figure \ref{fig:resultConcave}(Bottom).
 
-\begin{figure*}
+\begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{figures/multiplanar/ConcaveResult.pdf}
+\includegraphics[width=\linewidth]{figures/multiplanar/ConcaveResult.pdf}
 \caption[Result: Concave arrangement]{There is an art exhibition containing
 multiple posters arranged in concave fashion as shown in the long range photograph (top-left). We have
 selected the area to be imaged as shown in GUI for area selection(top-right).
 Green quadrilateral shows user selected area while blue, violet and magenta
-coloured quadrilaterals represent the multiple planar bounded regions
+colored quadrilaterals represent the multiple planar bounded regions
 estimated by our algorithm. In the path planning stage, overall 27 (9 from left
 plane, 12 from middle and 6 from the right plane) positions were estimated to cover
 full region. Images captured from those positions are mosaiced using our algorithm
 to get the final mosaicing output as shown in the bottom image.}
 \label{fig:resultConcave}.
-\end{figure*}
+\end{figure}
 
 \textbf{Convex:} In this experiment, paintings were arranged in the convex
 fashion as shown in Figure \ref{fig:resultConvex}(Top-Left). We have selected
@@ -586,21 +587,22 @@ the path planning stage, overall 30 (9 from the left plane, 12 from middle and 9
 from the right plane) positions to cover full region are estimated.  Images
 captured from those positions are mosaiced using our algorithm to get the final
 mosaicing output as shown in the Figure \ref{fig:resultConvex}(Bottom).
-\begin{figure*}
+
+\begin{figure}[t!]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/multiplanar/convexResult.pdf}
+\includegraphics[width=\linewidth]{figures/multiplanar/convexResult.pdf}
 \caption[Result: Convex arrangement]{There is an exhibition of Indian temple
 paintings arranged in convex fashion as shown in the long range photograph (top-left). Note that we
 cannot cover all paintings with enough details simultaneously. We have selected
 the area to be imaged as shown in GUI for area selection (top-right).
 Green quadrilateral shows user selected area while blue, violet and magenta
-coloured quadrilaterals represent the multiple planar bounded regions
+colored quadrilaterals represent the multiple planar bounded regions
 estimated by our algorithm. In the path planning stage, overall 30 (9 from left
 plane, 12 from middle and 9 from the right plane) positions were estimated to cover
 the full region. Images captured from estimated positions are mosaiced using our
 algorithm to get the final mosaicing output as shown in the bottom image.}
 \label{fig:resultConvex}
-\end{figure*}
+\end{figure}
 
 \textbf{Mixed:} We have performed a couple of experiments where posters were
 arranged in mixed fashion. First arrangement looked like Figure
@@ -610,21 +612,22 @@ Figure \ref{fig:resultMixed1}(Top-Right). In path planning overall 24 (6 from ea
 plane) positions are estimated to cover full region. Images captured from
 those positions are mosaiced using our algorithm to get the final mosaicing
 output as shown in the \ref{fig:resultMixed1}(Bottom).
-\begin{figure*}
+
+\begin{figure}[t!]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/multiplanar/mixed1Result.pdf}
+\includegraphics[width=\linewidth]{figures/multiplanar/mixed1Result.pdf}
 \caption[Result: Mixed arrangement]{There is an exhibition of Chinese lanterns'
 posters arranged in mixed (concave and convex) fashion as shown in the long range photograph
 (top-left). Note that we cannot cover all paintings with enough details
 simultaneously. We have selected the area to be imaged as shown in GUI for
 area selection (top-right). Green quadrilateral shows user selected area while
-blue, violet and magenta coloured quadrilaterals represent the multiple
+blue, violet and magenta colored quadrilaterals represent the multiple
 planar bounded regions estimated by our algorithm. In the path planning overall
 24 (6 from each plane) positions were estimated to cover the full region. Images
 captured from estimated positions are mosaiced using our algorithm to get the
 final mosaicing output as shown in the bottom image.}
 \label{fig:resultMixed1}
-\end{figure*}
+\end{figure}
 
 In the second mixed arrangement, middle posters form concave region while
  side posters form convex region as shown in Figure
@@ -633,21 +636,22 @@ Figure \ref{fig:resultMixed2}(Top-Right).  In path planning overall 24 (6 from
 each plane) positions were estimated to cover full region. Images captured from
 estimated positions are mosaiced using our algorithm to get the final mosaicing
 output as shown in the Figure \ref{fig:resultMixed2}(Bottom).
-\begin{figure*}
+
+\begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{figures/multiplanar/mixed2Result.pdf}
+\includegraphics[width=\linewidth]{figures/multiplanar/mixed2Result.pdf}
 \caption[Result: Mixed arrangement]{There is an exhibition of Chinese lanterns'
 posters arranged in mixed (concave and convex) fashion as shown in the long range photograph
 (top-left). Note that we cannot cover all paintings with enough details
 simultaneously. We have selected the area to be imaged as shown in GUI for
 area selection (top-right). Green quadrilateral shows user selected area while
-blue, violet and magenta coloured quadrilaterals represent the multiple
+blue, violet and magenta colored quadrilaterals represent the multiple
 planar bounded regions estimated by our algorithm. In the path planning
 stage, overall 24 (6 from each plane) positions were estimated to cover the full
 region. Images captured from estimated positions are mosaiced using our
 algorithm to get the final mosaicing output as shown in the bottom image.}
 \label{fig:resultMixed2}
-\end{figure*}
+\end{figure}
 
 \textbf{Planes at different depth:} In this experiment we have arranged posters
 parallel to each other, but at different depths as shown in Figure
@@ -656,9 +660,9 @@ due to change in planes. But we have imaged each exhibit independently using
 quadcopter and brought the mosaic of exhibit at a larger depth to the same depth
 of lesser depth exhibit mosaic using the estimated plane equations' information.
 The final result is shown in the Figure \ref{fig:resultFrontBack}(Bottom).
-\begin{figure*}
+\begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{figures/multiplanar/frontback.pdf}
+\includegraphics[width=\linewidth]{figures/multiplanar/frontback.pdf}
 \caption[Result: Imaging at different depths]{There are two Chinese lanterns'
 exhibits, arranged parallel to each other but having different depths as shown in the long range
 photograph(top-left). It is not able to mosaic both of them in a single
@@ -667,7 +671,7 @@ independently through a quadcopter and brought the mosaic of exhibit at larger
 depth to the same depth of lesser depth exhibit mosaic. The final result is
 shown in the bottom image.}
 \label{fig:resultFrontBack}
-\end{figure*}
+\end{figure}
 
 \section{Summary}
 We have developed an end-to-end application for autonomously imaging multiplanar

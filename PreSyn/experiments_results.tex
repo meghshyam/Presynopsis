@@ -46,7 +46,7 @@ the occasional differences are enough to make AutoStitch work. The
 results are shown in Figure~\ref{fig:sac3}(d).
 
 
-\begin{figure}[h!]
+\begin{figure}[hb!]
 \centering
 \includegraphics[width=0.87\linewidth]{figures/vacantSpaces/ValidationResult}
 \caption[Validation Result: Lady]{ (a) Uniformly sampled images from an outdoor
@@ -75,13 +75,14 @@ environment.
 
 The input stream had about 4300
 images. The selection algorithm (Section~\ref{sec:selection}) pruned the video
-into $N=5$ images. A sample of the selected images are seen in Figure~\ref{fig:teaser}.
+into $N=5$ images. A sample of the selected images are seen in Figure~\ref{fig:vacantTeaser}.
 
 There were two disconnected components in the resulting graph.
 AutoStitch was unable to produce any reasonable output as seen in
-Figure~\ref{fig:teaser}.  The scene, captured from a distance is also
+Figure~\ref{fig:vacantTeaser}.  The scene, captured from a distance is also
 shown.  One can see a better orthographic view of the posters.
 
+\textbf{Cars:}
 In an another experiment, the input stream had about 9000 input
 images.  The selection algorithm (Section~\ref{sec:selection}) pruned
 the video into $N=13$ images. A sample of the selected images are seen
@@ -107,11 +108,33 @@ Figure~\ref{fig:indoor_results}(e) clearly stands out in comparison.
 \label{fig:indoor_results}
 \end{figure}
 
+\textbf{Aircrafts 1:} The input stream had about 9100 images. The selection
+algorithm pruned the video into $N=14$ images. The scene as captured by a
+smartphone can also be seen in Figure~\ref{fig:aircrafts1}(b). A sample of the
+selected images are seen in Figure~\ref{fig:aircrafts1}(a).
+Figure~\ref{fig:aircrafts1}(c,d,e) shows the comparison of outputs of state of
+the art stitchers with the output of our algorithm. As there are vacant spaces,
+AutoStitch~\cite{autostitch} is able to join only top part of the scene, while
+Photoshop~\cite{photoshop} is showing two disconnected components.
+In contrast, since we use positional data, our output is an acceptable mosaic,
+and shows an orthographic view.
+
+\begin{figure*}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{figures/vacantSpaces/aircrafts1}
+	\caption[Result: Aircrafts]{(a) Pruned images from the quadcopter video using
+	our saliency algorithm of (b) an indoor scene. This long range photograph has been captured separately by a smartphone camera only for context. Notice a significant vacant
+space in the imagery. (c) Output of AutoStitch - only the upper half of the scene is output. (d) Output of Adobe Photoshop CS6 - 
+the vacant space posed a problem to the feature matching algorithm, so instead of a mosaic, individual pieces were output as mini-panoramas (e) Our output on the
+selected images. We are able to present the scene in high fidelity in an orthographic view.}
+	\label{fig:aircrafts1}
+\end{figure*}
+
 \subsection{Outdoor Imagery with Vacant Spaces}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.86\linewidth]{figures/vacantSpaces/orange_blue}
+\includegraphics[width=\linewidth]{figures/vacantSpaces/orange_blue}
 \caption[Result: Outdoor Exhibition]{(a) An outdoor scene captured by a standard
 camera in an exhibition. The approach to the area is normally cordoned off and one
   needs permission to get a quadcopter to take the picture.  Notice a
@@ -142,7 +165,7 @@ stitchers with output of our algorithm on another dataset.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.8\linewidth]{figures/vacantSpaces/Purple_red} 
+\includegraphics[width=\linewidth]{figures/vacantSpaces/Purple_red} 
 \caption[Result: Outdoor
 Exhibition 2]{(a) Another outdoor
 scene captured by a standard camera in an exhibition. The approach to the area is normally cordoned off and one
@@ -203,7 +226,7 @@ as our algorithm produces the  panorama correctly.\\\hline
 %correctly. As this scene was captured nearer from the plane than
 %earlier, we need to select more images than earlier dataset.\\\hline 
 
-\hyperref[fig:teaser]{Indoor exhibition} & 4300 & 40 sqft. & 5 &
+\hyperref[fig:vacantTeaser]{Indoor exhibition} & 4300 & 40 sqft. & 5 &
 1 & 2 & 2 & As there is vacant space between the two posters,
 AutoStitch produces only one panoramic image. Photoshop outputs two
 posters as two disconnected components; these correspond to our mini-panoramas.

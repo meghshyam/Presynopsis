@@ -11,7 +11,7 @@ the appropriate warps to register the images together.
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{figures/vacantSpaces/teaser.pdf}
-  \caption[Overview]{ \label{fig:teaser} The long range photograph of a scene
+  \caption[Overview]{ \label{fig:vacantTeaser} The long range photograph of a scene
     taken from an SLR camera is shown in top right.  When such a scene
     is probed by a quadcopter, it results in the input images shown on
     the left (color balance is different from the SLR camera).  The
@@ -31,17 +31,16 @@ an outdoor art exhibition).  This can make it challenging for a
 matching algorithm to find appropriate matches in large panoramas.  A
 related situation is when a scene area simply does not contain
 features (too little, or no features, e.g. posters in an event).
-Fig~\ref{fig:teaser} shows an example of this case.  The state of the
+Fig~\ref{fig:vacantTeaser} shows an example of this case.  The state of the
 art methods are unsatisfactory.  The idea of a moving quadcopter
 taking pictures suggests using a Structure from Motion (SfM) paradigm.
 However, based on our experiments with Bundler\cite{Snavely06,
   Snavely07} and VisualSFM \cite{Wu13}, we see that the success of SfM
 depends very strongly on ``good'' correspondences between input
-images, absent in large vacant (featureless) spaces (please see supplementary 
-material).  Specialized -- state of the art -- image stitching 
+images, absent in large vacant (featureless) spaces. Specialized -- state of the art -- image stitching 
 methods from \cite{Brown03, Brown05} used in tuned software like Adobe 
 Photoshop CS6 or AutoStitch \emph{also} do not work as can be seen 
-in Figure~\ref{fig:teaser}.
+in Figure~\ref{fig:vacantTeaser}.
 
 
 The goal in this work is to create panoramic images of scenes using a
@@ -125,7 +124,7 @@ this problem is shown in Figure~\ref{fig:schematic}.
 \end{figure}    
 
 The method adopted is pictorially depicted in the overview shown in
-Figure~\ref{fig:workflow} and is described in detail later on.  In
+Figure~\ref{fig:vacantworkflow} and is described in detail later on.  In
 brief, we systematically acquire a video of the scene, reduce the
 input video to a manageable number of images, and finally combine the
 images acquired from different positions into a mosaic.
@@ -133,7 +132,7 @@ images acquired from different positions into a mosaic.
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\textwidth]{figures/vacantSpaces/Workflow} 
-  \caption[Workflow]{ \label{fig:workflow} Overview: Input imagery is
+  \caption[Workflow]{ \label{fig:vacantworkflow} Overview: Input imagery is
     systematically acquired (top left) by a quadcopter.  In the next
     step, interesting images are found by clustering the video into
     regions based on positional data.  A graph is constructed using
@@ -145,7 +144,7 @@ images acquired from different positions into a mosaic.
 
 
 \subsection{Video acquisition}
-We first despatch the quadcopter to as close to the scene as
+We first dispatch the quadcopter to as close to the scene as
 possible. The corners of a rectangular area of interest are provided
 to the quadcopter, and it is programmed to traverse the area in a
 raster scan fashion.  There are various control aspects involved in
@@ -198,7 +197,7 @@ algorithm.  Once cluster centers are found, we pick the leaf node
 which is closest to the cluster center to find a real image. This
 process is schematically shown in Figure~\ref{fig:selection}.
 
-Remarks: If we had no IMU information, one may consider selecting a
+If we had no IMU information, one may consider selecting a
 set of interesting images using any appearance based method such as
 optical flow or feature selection.  However, due to the jerky and
 uneven motion of the quadcopter, such measures do not prove to be
@@ -214,10 +213,14 @@ information is transmitted via WiFi to a host computer).
 
 \begin{figure}[t!]
   \centering
-  \includegraphics[width=0.8\textwidth]{figures/vacantSpaces/selection} 
-  \caption[Selection of Images]{ \label{fig:selection} We align the image stream
-  with IMU data, and then transform the video into a set of interesting
-    images with a clustering algorithm.}
+  \includegraphics[width=0.42\textwidth]{figures/vacantSpaces/selection} 
+  \includegraphics[width=0.56\textwidth]{figures/vacantSpaces/clustering}
+  \caption[Selection of Images]{ \label{fig:selection} Left:We align the image
+  stream with IMU data, and then transform the video into a set of interesting
+    images with a clustering algorithm. Right: Hierarchical clustering is done
+    on the positional data to find out the optimal number of positions which
+    `encompasses' the scene. Threshold based on the average distance of the
+    quadcopter from the plane is used to prune the tree.}
 \end{figure}    
 
 In practice, the number of cluster centers for the scenes we have
