@@ -1,9 +1,9 @@
 \chapter[Blur Resilient Fiducials]{A Motion Blur Resilient Fiducial For
 Quadcopter Imaging}
-\section{Introduction}
+\label{ch:fiducial}
 
-The recent availability of low-cost quadcopters has helped  fuel
-significant efforts in research focused on unmanned aerial
+The recent availability of low-cost quadcopters such as ARDrone 2.0 has helped 
+fuel significant efforts in research focused on unmanned aerial
 vehicles. Navigation and planning
 of these vehicles is typically~\cite{Davison:2007,Engel12,Engel13}
 performed using onboard inertial sensors and/or vision based modules
@@ -13,6 +13,8 @@ placed~\cite{Bosnak:2012,Lim09,Klopschitz:2007}
  in the environment to provide additional information that
 serves for ground-truth positional measurements.
 
+\section{Challenges}
+\label{sec:intro}
 In order to be effective, fiducial markers (or simply, fiducials) need
 to be easily detected in the scene. A variety of fiducials have
 been proposed~\cite{NaimarkF02,ARToolkit02,Fiala05,Pitag13,runetag11}
@@ -766,6 +768,25 @@ fiducials. Nevertheless, we may be able to generate a larger number of
 fiducials by using color backgrounds. This is an area of interest for
 further research.
 
+\section{Identification of quadcopter using fiducials}
+Multiple quadcopters can be used for applications such as inspection of dams,
+bridges. Quadcopters need to identify themselves accurately so that
+effective collaboration among them can happen. E.g., if there are two
+quadcopters covering a large plane, one quadcopter need to identify that there
+is another quadcopter which will cover the left side and it need to cover the
+right side.
+
+Tracking of objects in motion is a challenging task as shown in
+Section~\ref{sec:intro}. Hence, we propose to use our fiducials on the
+quadcopter itself. We have put our two bit fiducials on two sides of the
+quadcopter as shown in Figure~\ref{fig:fiducialQuadcopter}(a). 
+Currently, we have used another camera to capture this moving quadcopter.
+However in practice we can use a quadcopter to capture another quadcopter.
+Figure~\ref{fig:fiducialQuadcopter}(b),(c) and (d) shows the detection of
+and classification fiducials from different angles. As each fiducial carry a
+unique code, we can accurately tell that which side of the quadcopter we are
+looking at.
+
 \section{Conclusion}
 
 Quadcopters are subject to quick and unstable motions that can cause
@@ -778,5 +799,3 @@ unaffected by the blur and therefore still be recognizable. We have
 shown through experimental validation that our fiducial will work
 under large amounts of motion blur and can significantly outperform
 existing fiducials under this scenario.
-
-\label{ch:fiducial}
