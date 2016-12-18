@@ -12,9 +12,6 @@ effectiveness of navigation methods, one or more fiducials are commonly
 placed~\cite{Bosnak:2012,Lim09,Klopschitz:2007}
  in the environment to provide additional information that
 serves for ground-truth positional measurements.
-
-\section{Challenges}
-\label{sec:intro}
 In order to be effective, fiducial markers (or simply, fiducials) need
 to be easily detected in the scene. A variety of fiducials have
 been proposed~\cite{NaimarkF02,ARToolkit02,Fiala05,Pitag13,runetag11}
@@ -23,7 +20,11 @@ rectangular grids~\cite{ARToolkit02,Fiala05} or other geometric
 primitives arranged in predefined spatial
 patterns~\cite{NaimarkF02,Pitag13,runetag11}.  Figure \ref{fig:fiducial_teaser}
 shows the popular ARTag \cite{Fiala05} fiducial as possibly seen from
-a quadcopter. A problem for existing fiducials is that low-cost
+a quadcopter.
+
+\section{Challenges}
+\label{sec:intro}
+ A problem for existing fiducials is that low-cost
 quadcopters often exhibit very quick and erratic physical movements
 that result in motion blur evidenced in the images captured from the quadcopter's onboard
 camera. This motion blur has an adverse effect on the recognition of fiducial
@@ -36,9 +37,8 @@ Compounding this problem is the additional issue of dropped video
 frames from the quadcopter's wireless communication module. This means
 that not only is blur a problem, but there may be large
 discontinuities in the pattern's position due to missing video
-frames. As we will show in Section~4, this later problem makes it
-challenging to apply tracking algorithms that can exploit temporal
-coherence for determining the fiducial's position.
+frames. This problem makes it challenging to apply tracking algorithms that can
+exploit temporal coherence for determining the fiducial's position.
 
 \noindent\textbf{Contributions:}~~To address these problems, we propose a
 fiducial that is designed to be resistant to motion blur. Our design
@@ -56,13 +56,13 @@ significantly outperform existing codes in the presence of motion
 blur. As far as we are aware, this is the first work to propose a blur
 resistant marker especially in quadcopter settings.
 
-The remainder of this chapter is organized as follows.  Section~2 gives
-an overview of related work in fiducials, as well as the related
-problem of tracking. Section~2 motivates our fiducial design by
-analyzing the performance of existing codes under motion blur, and
-describes our detection algorithm. Section~3 shows several
-experiments using quadcopter imagery. This is followed by a discussion
-and a summary in Section~4 and Section~5 respectively.
+%The remainder of this chapter is organized as follows.  Section~2 gives
+%an overview of related work in fiducials, as well as the related
+%problem of tracking. Section~2 motivates our fiducial design by
+%analyzing the performance of existing codes under motion blur, and
+%describes our detection algorithm. Section~3 shows several
+%experiments using quadcopter imagery. This is followed by a discussion
+%and a summary in Section~4 and Section~5 respectively.
 
 \begin{figure}[t!]
   \includegraphics[width=\linewidth]{figures/fiducial/teaser}
@@ -547,14 +547,14 @@ scenes.  We have used four image sequences (consisting of around 1000
 frames each). Each sequence contains different fiducials so that we
 are able to contrast the performance of BLUT~\cite{Wu:2011} with the
 proposed method.  From the images in the top rows of
-Figure~\ref{fig:BLUT_compare_00} and Figure~\ref{fig:BLUT_compare_01},
+Figure~\ref{fig:BLUT_compare_00}--\ref{fig:BLUT_compare_11},
 we can see that BLUT is able to track the fiducial when the position
 of fiducial does not change too much in successive frames. Also, it
 can be seen that once BLUT loses track of the fiducial, it is not
 able to recover. Since our approach detects the code in each frame,
-large changes in the pattern's position is not an issue.  Some of our
-detection results are also shown in Figure~\ref{fig:BLUT_compare_00}
-and Figure~\ref{fig:BLUT_compare_01}.
+large changes in the pattern's position is not an issue.  Our fiducial
+detection results are also shown in
+Figure~\ref{fig:BLUT_compare_00}--\ref{fig:BLUT_compare_11}.
 
 We have also found that even if we reset the BLUT tracker after it
 loses track, the tracker will once again malfunction after around 100
@@ -569,7 +569,7 @@ causing the BLUT tracker to fail is the dropping of frames combined
 with the unstable motion of quadcopter, resulting in large discrepancies in
 the  position of the fiducial between successive frames.
 
-\begin{figure*}
+\begin{figure*}[t!]
 \begin{subfigure}[b]{.19\textwidth}
 \includegraphics[width=\linewidth]{figures/fiducial/BLUT_output_00/2.jpg}
 \end{subfigure}
@@ -649,7 +649,6 @@ sequence. BLUT loses  track from the third frame onwards.}
 \label{fig:BLUT_compare_01}
 \end{figure*}
 
-\begin{comment}
 \begin{figure*}
 \begin{subfigure}[b]{.19\textwidth}
 \includegraphics[width=\linewidth]{figures/fiducial/BLUT_output_10/1.jpg}
@@ -725,7 +724,6 @@ direction from the quadcopter in the third frame. In first two frames, the quadc
 going up, but suddenly moved down.}
 \label{fig:BLUT_compare_11}
 \end{figure*}
-\end{comment}
 
 \section{Discussion and Limitations}\label{sec:discussion}
 
@@ -771,22 +769,33 @@ further research.
 \section{Identification of quadcopter using fiducials}
 Multiple quadcopters can be used for applications such as inspection of dams,
 bridges. Quadcopters need to identify themselves accurately so that
-effective collaboration among them can happen. E.g., if there are two
-quadcopters covering a large plane, one quadcopter need to identify that there
-is another quadcopter which will cover the left side and it need to cover the
-right side.
+effective collaboration among them can happen. E.g., Consider there are two
+quadcopters covering a large plane virtually divided in two parts. We would like  
+the quadcopter on the left side of a plane to cover left part of the scene. Similarly, the 
+quadcopter on right will cover the right part. Both quadcopters need to identify that there
+is another quadcopter and collaborate with each other to complete their respective 
+tasks efficiently.
 
 Tracking of objects in motion is a challenging task as shown in
 Section~\ref{sec:intro}. Hence, we propose to use our fiducials on the
 quadcopter itself. We have put our two bit fiducials on two sides of the
-quadcopter as shown in Figure~\ref{fig:fiducialQuadcopter}(a). 
+quadcopter as shown in Figure~\ref{fig:fiducialOnDrone}(a). 
 Currently, we have used another camera to capture this moving quadcopter.
 However in practice we can use a quadcopter to capture another quadcopter.
-Figure~\ref{fig:fiducialQuadcopter}(b),(c) and (d) shows the detection of
-and classification fiducials from different angles. As each fiducial carry a
+Figure~\ref{fig:fiducialOnDrone}(b) and (c) shows the detection of
+and classification of fiducials from two sides. As each fiducial carry a
 unique code, we can accurately tell that which side of the quadcopter we are
 looking at.
 
+\begin{figure}[t!]
+  \includegraphics[width=\linewidth]{figures/fiducial/fiducialOnDrone}
+  \caption[Fiducials on Quadcopter]{Identification of sides of quadcopter using
+  fiducials. (a) shows our distinct fiducials put on two sides of
+  quadcopter.(b) shows fiducial with binary code ``11"( class 3) being detected
+  from one side while (c) shows fiducial with binary code ``10"(class 2) being
+  detected from other side.}
+  \label{fig:fiducialOnDrone}
+\end{figure}
 \section{Conclusion}
 
 Quadcopters are subject to quick and unstable motions that can cause
