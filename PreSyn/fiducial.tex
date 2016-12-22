@@ -491,7 +491,7 @@ frames from this sequence as well as the performance of both
 fiducials. The overall detection rate of our tags is 90\% while that
 of ARTags is only around 60\%.
 
-\begin{figure*}
+\begin{figure*}[hb!]
 \begin{subfigure}[b]{.19\textwidth}
 \includegraphics[width=\linewidth]{figures/fiducial/setup_artag/output_79.jpg}
 \end{subfigure}
@@ -611,7 +611,7 @@ BLUT~\cite{Wu:2011}.
 \label{fig:BLUT_compare_00}
 \end{figure*}
 
-\begin{figure*}
+\begin{figure*}[ht!]
 \begin{subfigure}[b]{.19\textwidth}
 \includegraphics[width=\linewidth]{figures/fiducial/BLUT_output_01/11.jpg}
 \end{subfigure}
@@ -649,7 +649,7 @@ sequence. BLUT loses  track from the third frame onwards.}
 \label{fig:BLUT_compare_01}
 \end{figure*}
 
-\begin{figure*}
+\begin{figure*}[ht!]
 \begin{subfigure}[b]{.19\textwidth}
 \includegraphics[width=\linewidth]{figures/fiducial/BLUT_output_10/1.jpg}
 \end{subfigure}
@@ -686,7 +686,7 @@ sequence. From the second frame, BLUT loses track.}
 \label{fig:BLUT_compare_10}
 \end{figure*}
 
-\begin{figure*}
+\begin{figure*}[ht!]
 \begin{subfigure}[b]{.19\textwidth}
 \includegraphics[width=\linewidth]{figures/fiducial/BLUT_output_11/2.jpg}
 \end{subfigure}
@@ -724,6 +724,38 @@ direction from the quadcopter in the third frame. In first two frames, the quadc
 going up, but suddenly moved down.}
 \label{fig:BLUT_compare_11}
 \end{figure*}
+
+
+\section{Identification of quadcopter using fiducials}
+Multiple quadcopters can be used for applications such as inspection of dams,
+bridges. Quadcopters need to identify themselves accurately so that
+effective collaboration among them can happen. E.g., Consider there are two
+quadcopters covering a large plane virtually divided in two parts. We would like  
+the quadcopter on the left side of a plane to cover left part of the scene. Similarly, the 
+quadcopter on right will cover the right part. Both quadcopters need to identify that there
+is another quadcopter and collaborate with each other to complete their respective 
+tasks efficiently.
+
+\begin{figure}[hb!]
+  \includegraphics[width=\linewidth]{figures/fiducial/fiducialOnDrone}
+  \caption[Fiducials on Quadcopter]{Identification of sides of quadcopter using
+  fiducials. (a) shows our distinct fiducials put on two sides of
+  quadcopter.(b) shows fiducial with binary code ``11"( class 3) being detected
+  from one side while (c) shows fiducial with binary code ``10"(class 2) being
+  detected from other side.}
+  \label{fig:fiducialOnDrone}
+\end{figure}
+
+Tracking of objects in motion is a challenging task as shown in
+Section~\ref{sec:intro}. Hence, we propose to use our fiducials on the
+quadcopter itself. We have put our two bit fiducials on two sides of the
+quadcopter as shown in Figure~\ref{fig:fiducialOnDrone}(a). 
+Currently, we have used another camera to capture this moving quadcopter.
+However in practice we can use a quadcopter to capture another quadcopter.
+Figure~\ref{fig:fiducialOnDrone}(b) and (c) shows the detection of
+and classification of fiducials from two sides. As each fiducial carry a
+unique code, we can accurately tell that which side of the quadcopter we are
+looking at.
 
 \section{Discussion and Limitations}\label{sec:discussion}
 
@@ -766,38 +798,7 @@ fiducials. Nevertheless, we may be able to generate a larger number of
 fiducials by using color backgrounds. This is an area of interest for
 further research.
 
-\section{Identification of quadcopter using fiducials}
-Multiple quadcopters can be used for applications such as inspection of dams,
-bridges. Quadcopters need to identify themselves accurately so that
-effective collaboration among them can happen. E.g., Consider there are two
-quadcopters covering a large plane virtually divided in two parts. We would like  
-the quadcopter on the left side of a plane to cover left part of the scene. Similarly, the 
-quadcopter on right will cover the right part. Both quadcopters need to identify that there
-is another quadcopter and collaborate with each other to complete their respective 
-tasks efficiently.
-
-Tracking of objects in motion is a challenging task as shown in
-Section~\ref{sec:intro}. Hence, we propose to use our fiducials on the
-quadcopter itself. We have put our two bit fiducials on two sides of the
-quadcopter as shown in Figure~\ref{fig:fiducialOnDrone}(a). 
-Currently, we have used another camera to capture this moving quadcopter.
-However in practice we can use a quadcopter to capture another quadcopter.
-Figure~\ref{fig:fiducialOnDrone}(b) and (c) shows the detection of
-and classification of fiducials from two sides. As each fiducial carry a
-unique code, we can accurately tell that which side of the quadcopter we are
-looking at.
-
-\begin{figure}[t!]
-  \includegraphics[width=\linewidth]{figures/fiducial/fiducialOnDrone}
-  \caption[Fiducials on Quadcopter]{Identification of sides of quadcopter using
-  fiducials. (a) shows our distinct fiducials put on two sides of
-  quadcopter.(b) shows fiducial with binary code ``11"( class 3) being detected
-  from one side while (c) shows fiducial with binary code ``10"(class 2) being
-  detected from other side.}
-  \label{fig:fiducialOnDrone}
-\end{figure}
-\section{Conclusion}
-
+\section{Concluding remarks}
 Quadcopters are subject to quick and unstable motions that can cause
 significant motion blur in the captured images. This severely affects
 the detection rate of existing fiducials. We proposed the
@@ -808,3 +809,7 @@ unaffected by the blur and therefore still be recognizable. We have
 shown through experimental validation that our fiducial will work
 under large amounts of motion blur and can significantly outperform
 existing fiducials under this scenario.
+
+Our fiducials are also of great help in collaboration among multiple
+quadcopters for tracking. We have demonstrated that using our fiducials we
+can tell from which side of the quadcopter we are gazing.

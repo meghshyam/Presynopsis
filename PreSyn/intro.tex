@@ -68,10 +68,10 @@ released until the end of 2015, we have used Parrot's ARDrone 2.0.
 
 Consider a case where  we are inspecting a dam for cracks. We need to ensure
 that all small cracks are detected along with their respective positions from
-the captured video. Manual inspection of videos is also prone to (human) errors. 
-So we need to develop an efficient algorithm to process the video and output desirable representation of the input
-scene. One of the useful representations is a full panoramic view of the dam
-constructed from closeups of the patches. 
+the captured video. Manual inspection of videos is prone to (human) errors. 
+So we need to develop an efficient algorithm to process the video and output
+desirable representation of the input scene. One of the useful representations
+is a full panoramic view of the dam constructed from closeups of the patches. 
 
 However, large featureless regions of surfaces like a dam pose challenges to
 the use of homography based stitching to create the panorama. Hence, there is a
@@ -512,34 +512,31 @@ ARTags is around 60\%. }
 \end{figure}
 	
 \section{Organization of the thesis}
-The structure of the thesis is as follows:\\
- \noindent \textbf{Chapter 1} Introduces the problem of mosaicing a scene spread
-  over the multiplanar surface using quadcopter. It outlines the motivation for
-  working on the problem and the challenges we faced to attain the desired
-  solution. The important contributions made by this thesis are also summarized in this chapter.\\
+The remainder of the thesis is organizes as follows:\\
 
-\noindent \textbf{Chapter 2} Explains the details of a quadcopter focussing on
+\noindent \textbf{Chapter 2} explains the details of a quadcopter focussing on
 control and navigation aspects. Here, we also present previously published work
-in the area of mosaicing as well as autonomous navigation of quadcopter.
-We use this chapter as an opportunity to establish and contrast the scope of
-this thesis with respect to prior art.\\
+in the area of mosaicing, autonomous navigation of quadcopter as well as
+fiducials. We use this chapter as an opportunity to establish and contrast the
+scope of this thesis with respect to prior art.\\
 
-\noindent \textbf{Chapter 3} Elaborates on our proposed method for ``Mosaicing
+\noindent \textbf{Chapter 3} elaborates our proposed method for ``Mosaicing
 Scenes with Vacant Spaces'' using quadcopter. Proposed method fuses positional information
 from quadcopter with images to first, find out the position from which each
 image is taken and accordingly sort the images in two dimensional grid; second,
 use positional information to join two adjacent images which have very few features
 in common (and hence cannot be stitched using the homography-based method).\\
 
-\noindent \textbf{Chapter 4} Provides an overview of our approach
+\noindent \textbf{Chapter 4} provides an overview of our approach
 for imaging multiplanar scenes though quadcopter. Issues such as detection of
 multiplanar bounded regions and path planning for efficient imaging of multiplanar scenes
 are addressed.\\
 
-\noindent \textbf{Chapter 5} Elaborates on our design of blur
+\noindent \textbf{Chapter 5} elaborates on our design of blur
 resilient fiducial for identification of objects under a heavy motion blur. We
 have also proposed algorithm for robust detection of our blur resilient
 fiducial in this chapter.\\
  
- \noindent \textbf{Chapter 6} Concludes the thesis by summarizing our contributions.
+ \noindent \textbf{Chapter 6} concludes the thesis by summarizing our
+ contributions.
   We have also discussed possible ways to extend some of the ideas proposed in this thesis.
