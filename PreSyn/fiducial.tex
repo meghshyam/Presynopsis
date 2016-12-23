@@ -54,7 +54,7 @@ treat the presence or absence of a ring as a bit, allowing us to
 assign a code to the marker. Our experiments show that these designs can
 significantly outperform existing codes in the presence of motion
 blur. As far as we are aware, this is the first work to propose a blur
-resistant marker especially in quadcopter settings.
+resistant marker, especially in quadcopter settings.
 
 %The remainder of this chapter is organized as follows.  Section~2 gives
 %an overview of related work in fiducials, as well as the related
@@ -86,7 +86,7 @@ algorithm used to find the fiducial in an image, or a video sequence.
 \subsection{Prior Fiducials Under Motion Blur}\label{sec:blurtest}
 
 Here we examine the performance of two popular fiducials under
-motion blur.  Specifically we examine ARTags ~\cite{Fiala05} and
+motion blur.  Specifically, we examine ARTags ~\cite{Fiala05} and
 PiTags~\cite{Pitag13} given their differences in geometric design and
 the availability of an API to develop applications to recognize the tags.
 \footnote{RUNE-tag~\cite{runetag11} currently does not
@@ -138,7 +138,7 @@ We propose a binary coded fiducial that uses concentric white rings of
 equal widths on a black background with a blurred
 border\footnote{Obviously, this design can be inverted to have a white
   background with black rings.}. The outermost and innermost rings
-represent the start and end of the code and is embedded in the
+represent the start and end of the code and are embedded in the
 fiducial.  The binary code is represented by the presence (or absence)
 of rings between ``marker'' rings.
 
@@ -148,7 +148,7 @@ of rings between ``marker'' rings.
   \includegraphics[width=.24\linewidth]{figures/fiducial/newconcentric_01.pdf}
   \includegraphics[width=.24\linewidth]{figures/fiducial/newconcentric_10.pdf}
   \includegraphics[width=.24\linewidth]{figures/fiducial/newconcentric_11.pdf}
-  \caption[Two bit, binary  fiducials]{Two bit, binary  fiducials, representing,
+  \caption[Two-bit binary  fiducials]{Two bit binary  fiducials representing,
   from left to right 00, 01, 10, and 11.}
   \label{fig:fiducials}
 \end{figure}
@@ -158,7 +158,7 @@ code will change. The number of different patterns depends on the
 number of bits in the binary code. For example, if the binary code has
 three bits, there will be a maximum of three rings between marker
 rings and we end up with eight different patterns.
-Figure~\ref{fig:fiducials} shows two bit binary fiducials.
+Figure~\ref{fig:fiducials} shows two-bit binary fiducials.
 
 
 Our fiducial detection strategy is different from
@@ -188,7 +188,7 @@ various motion directions.
 
 Figure~\ref{fig:overall_flow} shows the process involved in fiducial
 detection. We give a brief overview of our algorithm here with each
-step described in detail afterwards.  Our detection algorithm has four
+step described in detail afterward.  Our detection algorithm has four
 steps. In Step~1, we apply a Gabor filter on the image to isolate the
 potential locations of the pattern.  In Step~2, we find clusters of
 patches in the Gabor output.  In Step~3, we perform Principal
@@ -218,8 +218,9 @@ following parameters were used for creating each Gabor kernel: $\lambda$ (wavele
 (aspect ratio) $= 0.5$, $\sigma$ (spread) $= 0.56\lambda$, $\psi$
 (phase angle) $= 0$ (for real part), $\pi/2$ (for imaginary part).
 Then $\ell^2$-norm of outputs along all orientations is calculated and finally
-$\ell^2$-normalized image is thresholded with threshold set to $0.4$ (on scale of zero to
-one).  For further details to the Gabor filter, see~\cite{Kruizinga:2002}.
+$\ell^2$-normalized image is thresholded with the threshold set to $0.4$ (on
+a scale of zero to one).  For further details to the Gabor filter,
+see~\cite{Kruizinga:2002}.
 %% MBS - is the Kruizinga filter reasonable to cite?
 
 \textbf{Clustering:}~~The binarized Gabor filter responses are
@@ -235,9 +236,9 @@ intensity profile patch in the input image along this direction as it
 extends through the bounding box of the cluster. The signature of this
 profile will be used to identify the code.
 
-After finding the intensity profile, we project the pixel intensities,
+After finding the intensity profile, we project the pixel intensities
 and record the number and width of the white-to-black transitions.  If
-the number of transitions, or the width of the transitions is not
+the number of transitions or the width of the transitions is not
 consistent with what is allowable by our code, we reject the clustered
 region as a potential fiducial.  Clustered components that have
 allowable transitions counts and transitions with uniform widths are
@@ -248,7 +249,7 @@ containing the intensity profile of the fiducial is used to identify
 which of the many fiducials might be present and is represented by a
 code.  We found that a training-based method using the k nearest
 neighbor (k-NN) technique gave better results than trying to find
-binary code directly by determining the presence (or absence) of ring
+binary code directly by determining the presence (or absence) of a ring
 at particular positions in the image patch. This required
 training-data which was easy to generate. A synthetic fiducial
 is blurred along 36 orientations (0, 10, 20, \ldots , 350) with blur
@@ -272,20 +273,18 @@ to label the patch.
   \label{fig:training_data}
 \end{figure}
 
-\begin{comment}
 We are able to find the number of rings in the fiducial by finding
-number of transitions in the intensity profile. To increase the classification
-accuracy, training data for patterns having same number of rings are grouped together; e.g., in two bit
-binary coded fiducial, training data for pattern ``01'' and ``10'' will be
-grouped together. In three bit binary coded fiducial, training data for pattern
+a number of transitions in the intensity profile. To increase the classification
+accuracy, training data for patterns having the same number of rings are grouped
+together; e.g., in two bit binary coded fiducial, training data for pattern ``01'' and ``10'' will be
+grouped together. In three-bit binary coded fiducial, training data for pattern
 ``001'', ``010'' and ``100'' will form one group, while training data for
-pattern ``110'', ``011'' and ``101'' will be in other group, and so on.
+pattern ``110'', ``011'' and ``101'' will be in another group, and so on.
 Depending on the number of detected rings in test pattern, it is matched
-against corresponding group in the training data, again using  the K-NN.
+against the corresponding group in the training data, again using  the K-NN.
 If we detect either zero rings or maximum possible
 rings in the test pattern, there will be no need to do further classification, we
 can classify the pattern as class 0 or the maximum class containing all 1s.
-\end{comment}
 
 \section{Experimental Validation}
 
@@ -337,7 +336,7 @@ Figure \ref{fig:output_all}.
 %\subsection{Comparisons}
 
 We compare our results with the commonly used ARTag. We also compare
-our results with Blur-driven tracker (BLUT)\cite{Wu:2011}.
+our results with the Blur-driven tracker (BLUT)\cite{Wu:2011}.
 
 \subsection{Comparison with ARTag}
 First, we repeat the same blur simulation experiment
@@ -379,12 +378,12 @@ rate of fiducials.  The proposed fiducial handsomely outperforms prior methods.}
 We also performed analysis to detect how accurately the center of the
 blur pattern can be localized under blur.  To do this, we have
 simulated data along different blur orientations for all patterns over
-eight different blur scales (30 to 65 with step size of 5). Values for
+eight different blur scales (30 to 65 with the step size of 5). Values for
 the localization of the pattern ``00'' after blur with 50 pixels is
 omitted since the pattern cannot be detected. From
 Table~\ref{tab:blur_angle_center}, it can be clearly seen that the 
 mean error in locating center by our algorithm is within approximate 3
-pixels, or 3\% of the diameter of fiducial.
+pixels, or 3\% of the diameter of the fiducial.
 
 \begin{table}[h!]
   \centering
@@ -454,7 +453,7 @@ the scene along with our fiducial to compare the resilience of blur by
 each fiducial type. We have used ar\_track\_alvar, ROS Wrapper for the
 ALVAR library~\cite{ros_alvar}, to detect the ARTags from the stream
 captured with the quadcopter camera. In each test dataset, we have
-used different two bit binary coded fiducial and recorded video of
+used different two-bit binary coded fiducial and recorded video of
 around two minute duration (i.e., around 1000 frames).  The quadcopter
 was flown in a routine manner in the room with its camera facing the
 wall. The comparison of the recognition
@@ -484,7 +483,7 @@ they were the correct fiducials and not other objects in the scene.
     minutes of video.} 
 \end{table}
 
-In another setup we arranged our fiducials on four sides of a box and
+In another setup, we arranged our fiducials on four sides of a box and
 revolved the quadcopter around the box (See  \cite{video}).
 Later, we repeated the process by replacing our fiducial by ARTags. Figure~\ref{fig:setup} shows some
 frames from this sequence as well as the performance of both
@@ -530,7 +529,7 @@ of ARTags is only around 60\%.
   revolving around our setup. 
 \textbf{Top} ARTags are not detected, shown by an absence of green rectangles. \textbf{Middle} In
 similar conditions, proposed fiducials are successfully
-detected. Overall detection rate of proposed
+detected. The overall detection rate of proposed
 fiducials is 90\% while that of ARTags is around 60\%. 
 \textbf{Bottom Rows} Time view of detection. ARTag is ``choppy'' with
 frequent losses, while the proposed fiducial (extreme bottom) is
@@ -561,7 +560,7 @@ loses track, the tracker will once again malfunction after around 100
 frames (approximately within 6 seconds). When we checked the timestamp
 data from image header captured through the AR Drone, we found that,
 there was a difference of 0.14 seconds between two successive frames
-indicating the dropping of video frame (normal 30fps should have a gap
+indicating the dropping of a video frame (normal 30fps should have a gap
 of 0.033 seconds). Also, there were around 50 instances in 1000 frames
 where the timestamp difference between two successive frames was
 greater than 0.1 seconds. As such, it appears one of the main culprits
@@ -600,13 +599,13 @@ the  position of the fiducial between successive frames.
 \begin{subfigure}[b]{.19\textwidth}
 \includegraphics[width=\linewidth]{figures/fiducial/BLUT_input_00/output6.jpg}
 \end{subfigure}
-\caption[Output of BLUT on ARTag and our fiducial ``00'']{\textbf{Top:} Output of
-BLUT~\cite{Wu:2011}.
+\caption[Output of BLUT on ARTag and our fiducial with code
+``00'']{\textbf{Top:} Output of BLUT~\cite{Wu:2011}.
 \textbf{Bottom:} Output of our algorithm on the same image 
   sequence. BLUT is able to track the fiducial till the third frame,
   but from the fourth frame onwards, BLUT loses track. In the first
   three frames, the size of the  bounding box is low, but in the fourth
-  and fifth frame it is large, indicating a sudden forward movement
+  and the fifth frame it is large, indicating a sudden forward movement
   of the quadcopter.} 
 \label{fig:BLUT_compare_00}
 \end{figure*}
@@ -642,8 +641,8 @@ BLUT~\cite{Wu:2011}.
 \begin{subfigure}[b]{.19\textwidth}
 \includegraphics[width=\linewidth]{figures/fiducial/BLUT_input_01/output15.jpg}
 \end{subfigure}
-\caption[Output of BLUT on ARTag and our fiducial code ``01'']{{\bf Top:} Output of
-BLUT~\cite{Wu:2011} on a sequence containing the ``01'' binary coded fiducial. {\bf Bottom:} Output of our
+\caption[Output of BLUT on ARTag and our fiducial with  code ``01'']{{\bf Top:}
+Output of BLUT~\cite{Wu:2011} on a sequence containing the ``01'' binary coded fiducial. {\bf Bottom:} Output of our
 algorithm on the same image 
 sequence. BLUT loses  track from the third frame onwards.}
 \label{fig:BLUT_compare_01}
@@ -680,8 +679,8 @@ sequence. BLUT loses  track from the third frame onwards.}
 \begin{subfigure}[b]{.19\textwidth}
 \includegraphics[width=\linewidth]{figures/fiducial/BLUT_input_10/output5.jpg}
 \end{subfigure}
-\caption{Top: Output of BLUT~\cite{Wu:2011} on sample image sequence containing
-``10'' binary coded fiducial. Bottom: Output of our algorithm on the same image
+\caption[Output of BLUT on ARTag and our fiducial with  code ``10'']{Top: Output
+of BLUT~\cite{Wu:2011} on sample image sequence containing ``10'' binary coded fiducial. Bottom: Output of our algorithm on the same image
 sequence. From the second frame, BLUT loses track.}
 \label{fig:BLUT_compare_10}
 \end{figure*}
@@ -717,8 +716,8 @@ sequence. From the second frame, BLUT loses track.}
 \begin{subfigure}[b]{.19\textwidth}
 \includegraphics[width=\linewidth]{figures/fiducial/BLUT_input_11/output6.jpg}
 \end{subfigure}
-\caption{Top: Output of BLUT~\cite{Wu:2011} on sample image sequence containing
-``11'' binary coded fiducial. Bottom: Output of our algorithm on the same image
+\caption[Output of BLUT on ARTag and our fiducial with  code ``11'']{Top: Output
+of BLUT~\cite{Wu:2011} on sample image sequence containing ``11'' binary coded fiducial. Bottom: Output of our algorithm on the same image
 sequence. BLUT lost the track from third frame. There is sudden reversal of
 direction from the quadcopter in the third frame. In first two frames, the quadcopter was
 going up, but suddenly moved down.}
@@ -748,10 +747,10 @@ tasks efficiently.
 
 Tracking of objects in motion is a challenging task as shown in
 Section~\ref{sec:intro}. Hence, we propose to use our fiducials on the
-quadcopter itself. We have put our two bit fiducials on two sides of the
+quadcopter itself. We have put our two-bit fiducials on two sides of the
 quadcopter as shown in Figure~\ref{fig:fiducialOnDrone}(a). 
 Currently, we have used another camera to capture this moving quadcopter.
-However in practice we can use a quadcopter to capture another quadcopter.
+However, in practice, we can use a quadcopter to capture another quadcopter.
 Figure~\ref{fig:fiducialOnDrone}(b) and (c) shows the detection of
 and classification of fiducials from two sides. As each fiducial carry a
 unique code, we can accurately tell that which side of the quadcopter we are
@@ -775,10 +774,10 @@ is required or an alternative strategy for detection is required.
 %\noindent\textbf{False Negatives}~~
 
 We found that sometimes our detection algorithm fails to recognize the
-``00'' fiducial, when there is severe blur.  This is because when there
+``00'' fiducial, when there is a severe blur.  This is because when there
 is too much blur, the innermost ring's response in the Gabor output is
 too low and not detected properly.  This problem can be resolved by
-increasing the radius of innermost ring to reduce the effect of blur
+increasing the radius of the innermost ring to reduce the effect of blur
 on the innermost ring.
 %\noindent\textbf{Pose Estimation}~~
 
@@ -786,11 +785,11 @@ We note that other markers are able to give full pose estimation after
 detection.  However, we are only able to reliably detect the center
 point and therefore cannot estimate pose.  Of course, if four markers
 were used in a known order, pose could be estimated. The current
-resolution of onboard camera is a significant  hurdle to clear before we
+resolution of the onboard camera is a significant  hurdle to clear before we
 can effectively use multiple markers in each scene.
 %\noindent\textbf{Number of Fiducials}~~
 
-In terms of numbers of fiducials, we are able to generate less markers
+In terms of numbers of fiducials, we are able to generate fewer markers
 than ARTag. Many applications in robotics (e.g., quadcopter navigation)
 may not require simultaneous use of a large number of fiducials.  Most
 of the time, it is sufficient to have 4-6 different

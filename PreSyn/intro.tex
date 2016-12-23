@@ -5,24 +5,24 @@ increasingly of great use in applications such as aerial
 surveillance\cite{dronesurvey1, dronesurvey3}, transporting
 medicines\cite{dronedelivery1,dronedelivery2}, photography\cite{dronephoto1,
 dronephoto2, dronephoto3}, archeology\cite{dronearchaeology}.
-Due to their ability to go to inaccessible areas e.g., terraces of high rise
-buildings, hills, etc., it is indispensable in search and rescue operations.
-Drones have reportedly been used in search and rescue operation in flood hit
+Due to their ability to go to inaccessible areas e.g., terraces of high-rise
+buildings, hills, etc., it is indispensable for search and rescue operations.
+Drones have reportedly been used in search and rescue operation in flood-hit
 areas in Uttarakhand in 2013. These have also been used for military
 purposes e.g., surveillance to restrict infiltration in border areas\cite{dronesurvey2}.
 Areas such as agriculture(for pest control), public health (stacked garbage
 detection), civil inspection (dams, nuclear reactors, old temple restoration) have 
-opened a lot of opportunities towards utility of drones.
+opened a lot of opportunities towards the utility of drones.
 
-Drones may be classified in two types: those which can hover (e.g.
-quadcopters, octopcopters, etc.), those which cannot (mainly military drones
+Drones may be classified into two types: those which can hover (e.g.
+quadcopters, octocopters, etc.), those which cannot (mainly military drones
 used for surveillance, attack etc.). We are mainly interested in the first type due
-to ability to capture still photographs and videos. It enables us to do
+to the ability to capture still photographs and videos. It enables us to do
 close inspection which is required in many applications. Currently, in the
 market variety of quadcopters are available from USD 100 to USD 3000.
 Some of the models are shown in Figure~\ref{fig:quadcopters}.
-Each one has its own specialty. However, for autonomous navigation we require mainly
-three characteristics. First, it should have camera with good resolution (at
+Each one has its own specialty. However, for autonomous navigation, we require mainly
+three characteristics. First, it should have a camera with good resolution (at
 least 1080 x 720 pixels). Second, it should be able to communicate with a
 computer through some protocol and third, we should be able to fly it indoors as
 well as outdoors.
@@ -35,20 +35,20 @@ quadcopters.[Picture Courtesy: Google image search]}
 \label{fig:quadcopters}
 \end{figure}
 
-Generally the first requirement is met in all quadcopters, but only a few
+Generally, the first requirement is met in all quadcopters, but only a few
 quadcopters satisfy second and third requirements. E.g., DJI Phantom 4
- has camera mounted on 3-axis gimbal coupled with gyroscope. It enables
+ has a camera mounted on 3-axis gimbal coupled with a gyroscope. It enables
 us to take very stable video while flying. But, till now there is no way to interface DJI
-Phantom 4 with a computer. We have to use joystick like control provided along
+Phantom 4 with a computer. We have to use joystick-like control provided along
 with the quadcopter to manually navigate the quadcopter.
-Octcopters such as  DJI S1000 have excellent flight control as well as
+Octocopters such as  DJI S1000 have excellent flight control as well as
 stability. But due to its bulky nature (weight around 11Kg), we can not use it
 in indoor areas.
 
 
 
 There are a few assembled quadcopter systems which became quite popular lately,
-e.g., team at the University of Pennsylvania have developed a series of
+e.g., the team at the University of Pennsylvania have developed a series of
 quadcopters capable of doing unbelievable maneuvers. However, such systems use motion camera
 systems such as Vicon to find out the pose of the quadcopters in motion.
 Hence, we cannot use it in uncontrolled environments.
@@ -56,7 +56,7 @@ Hence, we cannot use it in uncontrolled environments.
 Parrot's ARDrone and Bebop are two reasonably priced (USD 350 and USD
 700 respectively) quadcopters having HD camera with resolution 1280 x 720
 pixels. Though it is lightweight (compared to DJI Phantom 4), it is robust
-enough to withstand in outdoor conditions. It streams a WiFi hotspot to which
+enough to withstand outdoor conditions. It streams a WiFi hotspot to which
 any computer can be connected. Parrot has also released SDK which is helpful to
 do interfacing with these quadcopters. As Parrot's Bebop was not publicly
 released until the end of 2015, we have used Parrot's ARDrone 2.0.
@@ -86,7 +86,7 @@ their use is limited in developing countries. Also, as these drones use the GPS
 for navigation, we cannot use them in indoor scenes. Even if the GPS signal is
 available, we cannot rely only on GPS for navigation of drones due to various
 reasons (GPS jamming, spurious GPS signals). We may think of navigating drone
-manually in such cases. It will however be cumbersome and prone to human errors.
+manually in such cases. However, it will be cumbersome and prone to human errors.
 Hence, there is need of developing a stable technique for autonomous navigation
 and control of drones in various scenarios.
 
@@ -102,7 +102,7 @@ a heavy motion blur.
 
 The problem of autonomous navigation of quadcopters to image multiplanar
 surfaces with correctly classifying each quadcopter with the help of blur
-resilient fiducial, forms the basis of the work presented in this thesis.\\
+resilient fiducial forms the basis of the work presented in this thesis.\\
 
 \section{Problem Statement}
 \textit{We would like to autonomously navigate the quadcopter to image
@@ -139,9 +139,9 @@ a handheld camera.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.98\linewidth]{figures/orthographicView}
-\caption[Problems in imaging large scene using handheld camera]{Illustration of
-problems in imaging large planar scene with handheld camera. A 40 feet wall
-captured with handheld camera from long range doesn't capture smaller details
+\caption[Problems in imaging large scene using a handheld camera]{Illustration of
+problems in imaging large planar scene with a handheld camera. A 40 feet wall
+captured with a handheld camera from long range doesn't capture smaller details
 such as the pressure dial shown in the box. We need to capture such large
 planar structures by placing camera closer and orthogonal to the plane being imaged.}
 \label{fig:orthographicView}
@@ -151,7 +151,7 @@ planar structures by placing camera closer and orthogonal to the plane being ima
 \centering
 \includegraphics[width=0.98\linewidth]{figures/vacantSpaces}
 \caption[Jigsaw Puzzle as a mosaicing problem]{Jigsaw Puzzle as a mosaicing
-problem. Individual pieces (Left) of jigsaw puzzle can be thought of constituent images of mosaic. Due to featureless
+problem. Individual pieces (Left) of a jigsaw puzzle can be thought of constituent images of mosaic. Due to featureless
 regions belonging to sea (shown in Middle), one may find it difficult to join
 ``Americas'' with remaining continents as shown in (Right). We have to use
 our knowledge about geography to complete the puzzle.}
@@ -240,10 +240,10 @@ features from those images.}
   multiRANSAC~\cite{zuliani}, j-linkage~\cite{jlinkage},
   t-linkage~\cite{tlinkage} in literature for detection of multiple models from
   the input data.  But, these methods do not output boundaries of planar
-  regions. Also, these methods have not considered validity of boundaries of
-  planar regions to  filter noisy points appropriately. As a result such noisy
+  regions. Also, these methods have not considered the validity of boundaries of
+  planar regions to  filter noisy points appropriately. As a result, such noisy
   points get clustered into wrong models, extending boundaries of planar
-  regions incorrectly. Hence there is a need of a method to accurately estimate
+  regions incorrectly. Hence there is a need for a method to accurately estimate
   multiplanar bounded regions in real-time.
   
   \item \textbf{Identification of a quadcopter under motion:}
@@ -335,7 +335,7 @@ vision algorithms, however, may be a useful practice.
 The method adopted is pictorially depicted in the overview shown in
 Figure~\ref{fig:vaccantSpaces_workflow}.  In
 brief, we systematically acquire a video of the scene, reduce the
-input video to a manageable number of images, and finally combine the
+input video to a manageable number of images, and finally, combine the
 images acquired from different positions into a mosaic. 
 
 The result on a sample scene is shown in Figure~\ref{fig:vacantSpaces_result}.
@@ -395,7 +395,7 @@ using PTAM based method\cite{engel}. Later we use our algorithm, an improvement
 over j-linkage\cite{jlinkage} to detect multiplanar bounded regions from the area
 marked by the user through our user interface. Path planning is done for each
 planar bounded region to find out the camera positions in such a way
-that images captured from those positions encompass the scene in optimal manner.
+that images captured from those positions encompass the scene in an optimal manner.
 The quadcopter is autonomously maneuvered along the estimated path and videos
 are captured at target points. For each planar bounded region, the appropriate
 frame from each video is found and then given to a mosaicing algorithm. 
@@ -438,13 +438,13 @@ overview of our fiducial detection algorithm.
  \label{fig:fiducial_workflow}
 \end{figure}
 
-Single quadcopter is not sufficient for imaging large multiplanar scenes due to
+The single quadcopter is not sufficient for imaging large multiplanar scenes due to
 battery constraints. Instead, we may use multiple quadcopters in
 collaboration for imaging multiplanar scenes. We have to identify each
 quadcopter uniquely for accurate collaboration among multiple quadcopters. 
 
 Generally, fiducial markers such as ARTag\cite{Fiala05} are used to identify
-objects in environment. A problem with existing fiducials is that low-cost
+objects in the environment. A problem with existing fiducials is that low-cost
 quadcopters often exhibit very quick and erratic physical movements that result
 in motion blur which is evident in the images captured from the quadcopter's
 onboard camera. This motion blur has an adverse effect on the recognition of fiducial
@@ -512,7 +512,7 @@ ARTags is around 60\%. }
 \end{figure}
 	
 \section{Organization of the thesis}
-The remainder of the thesis is organizes as follows:\\
+The remainder of the thesis is organized as follows:\\
 
 \noindent \textbf{Chapter 2} explains the details of a quadcopter focussing on
 control and navigation aspects. Here, we also present previously published work

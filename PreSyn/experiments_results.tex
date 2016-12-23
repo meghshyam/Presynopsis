@@ -5,7 +5,7 @@
 All our experiments have been completed with the inexpensive consumer
 quadcopter called a Parrot's AR Drone 2.0. The imagery acquired were
 from actual graffiti painted on large walls as well as posters in an
-exhibition.  We have used the ROS based ARDrone Autonomy
+exhibition.  We have used the ROS-based ARDrone Autonomy
 Driver to communicate with the drone. For the purpose of showing the
 efficacy of our method, we also took a picture of the scene from a
 distance with a smartphone camera to better understand the scene.
@@ -50,7 +50,7 @@ results are shown in Figure~\ref{fig:sac3}(d).
 \centering
 \includegraphics[width=0.87\linewidth]{figures/vacantSpaces/ValidationResult}
 \caption[Validation Result: Lady]{ (a) Uniformly sampled images from an outdoor
-video expedition.  (b) Output of the state of the art photo stitchers
+video expedition.  (b) The output of the state of the art photo stitchers
   (left:AutoStitch, right:Adobe Photoshop CS6) on uniformly time
   sampled images.  As time sampled images do not guarantee coverage of
   the scene, the panorama is broken. The top portions do not belong at
@@ -70,7 +70,7 @@ considered.
 
 \subsection{Indoor Imagery with Vacant Spaces}
 
-Our next selection of experiments were conducted in an indoor
+Our next selection of experiments was conducted in an indoor
 environment.  
 
 The input stream had about 4300
@@ -99,8 +99,8 @@ Figure~\ref{fig:indoor_results}(e) clearly stands out in comparison.
   saliency algorithm of (b) an indoor scene. This long range photograph
   has been captured separately by a smartphone camera only for
   context. Notice a significant vacant space in the imagery.  (c)
-  Output of AutoStitch -- only the upper half of the scene is output.
-  (d) Output of Adobe Photoshop CS6 -- the vacant space posed a problem to the
+  The output of AutoStitch -- only the upper half of the scene is output.
+  (d) The output of Adobe Photoshop CS6 -- the vacant space posed a problem to the
   feature matching algorithm, so instead of a mosaic, individual
   pieces were output as mini-panoramas (e) Our output on the selected
   images. We are able to present the scene in high fidelity in an
@@ -111,7 +111,7 @@ Figure~\ref{fig:indoor_results}(e) clearly stands out in comparison.
 \textbf{Aircrafts 1:} The input stream had about 9100 images. The selection
 algorithm pruned the video into $N=14$ images. The scene as captured by a
 smartphone can also be seen in Figure~\ref{fig:aircrafts1}(b). A sample of the
-selected images are seen in Figure~\ref{fig:aircrafts1}(a).
+selected images is seen in Figure~\ref{fig:aircrafts1}(a).
 Figure~\ref{fig:aircrafts1}(c,d,e) shows the comparison of outputs of state of
 the art stitchers with the output of our algorithm. As there are vacant spaces,
 AutoStitch~\cite{autostitch} is able to join only top part of the scene, while
@@ -124,7 +124,7 @@ and shows an orthographic view.
 	\includegraphics[width=\linewidth]{figures/vacantSpaces/aircrafts1}
 	\caption[Result: Aircrafts]{(a) Pruned images from the quadcopter video using
 	our saliency algorithm of (b) an indoor scene. This long range photograph has been captured separately by a smartphone camera only for context. Notice a significant vacant
-space in the imagery. (c) Output of AutoStitch - only the upper half of the scene is output. (d) Output of Adobe Photoshop CS6 - 
+space in the imagery. (c) The output of AutoStitch - only the upper half of the scene is output. (d) The output of Adobe Photoshop CS6 - 
 the vacant space posed a problem to the feature matching algorithm, so instead of a mosaic, individual pieces were output as mini-panoramas (e) Our output on the
 selected images. We are able to present the scene in high fidelity in an orthographic view.}
 	\label{fig:aircrafts1}
@@ -139,9 +139,9 @@ selected images. We are able to present the scene in high fidelity in an orthogr
 camera in an exhibition. The approach to the area is normally cordoned off and one
   needs permission to get a quadcopter to take the picture.  Notice a
   significant gap between the two posters.  (b) Pruned images from the
-  quadcopter video using our saliency algorithm. (c) Output of
+  quadcopter video using our saliency algorithm. (c) The output of
   AutoStitch on the selected images. The mosaic is not reasonable
-  presumably because of the confusion in features. (d) Output of Adobe
+  presumably because of the confusion in features. (d) The output of Adobe
   Photoshop CS6 on the selected images. The vacant space posed a
   problem to the feature matching algorithm, so instead of a mosaic,
   individual pieces were output as mini-panoramas (e) Our output on
@@ -161,7 +161,7 @@ AutoStitch is getting confused by too many matching features.
 Please see supplementary material for results on other indoor as well as outdoor datasets.
 
 Figure \ref{fig:results2} shows comparison of outputs of state of the art
-stitchers with output of our algorithm on another dataset.
+stitchers with the output of our algorithm on another dataset.
 
 \begin{figure}[h!]
 \centering
@@ -171,9 +171,9 @@ Exhibition 2]{(a) Another outdoor
 scene captured by a standard camera in an exhibition. The approach to the area is normally cordoned off and one
   needs permission to get a quadcopter to take the picture.  Notice a
   significant gap between the two posters.  (b) Pruned images from the
-  quadcopter video using our saliency algorithm. (c) Output of
+  quadcopter video using our saliency algorithm. (c) The output of
   AutoStitch on the selected images. The mosaic is not reasonable
-  presumably because of the confusion in features. (d) Output of Adobe
+  presumably because of the confusion in features. (d) The output of Adobe
   Photoshop CS6 on the selected images. The vacant space posed a
   problem to the feature matching algorithm, so instead of a mosaic,
   individual pieces were output as mini-panoramas (e) Our output on
@@ -188,7 +188,7 @@ scene captured by a standard camera in an exhibition. The approach to the area i
 The performance of our algorithm as a function of the scene, as well
 comparison with other software is summarized in
 Table~\ref{tbl:results}.  It can be seen that, whenever there is
-vacant spaces between adjacent images, AutoStitch produces only
+vacant space between adjacent images, AutoStitch produces only
 one component, presumably the largest.  Adobe Photoshop outputs all disconnected
 components. Sometimes due to the lack of spatial proximity
 information, the resulting images (or components) are disconnected instead of being 
@@ -245,7 +245,7 @@ space.\\\hline
 the two posters which are sometimes proximal and sometimes
 geographically distant.  A single panorama is produced, but the output
 is incorrect. We use the IMU data
-for arranging the images in spatial neighborhood; we have fewer
+for arranging the images in a spatial neighborhood; we have fewer
 mini-panoramas.  Photoshop is not able to produce a super-panorama and
 the number of disconnected components in Photoshop's output is larger
 than the number of mini-panoramas.\\\hline  
