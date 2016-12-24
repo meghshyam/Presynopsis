@@ -22,7 +22,7 @@ patterns~\cite{NaimarkF02,Pitag13,runetag11}.  Figure \ref{fig:fiducial_teaser}
 shows the popular ARTag \cite{Fiala05} fiducial as possibly seen from
 a quadcopter.
 
-\section{Challenges}
+\section{Introduction}
 \label{sec:intro}
  A problem for existing fiducials is that low-cost
 quadcopters often exhibit very quick and erratic physical movements
@@ -399,7 +399,8 @@ pixels, or 3\% of the diameter of the fiducial.
     \footnotesize{90} & \footnotesize{1.83 $\pm$ 0.25}  \\
     \cline{1-2}
   \end{tabularx}
-    \caption{Center localization error.
+    \caption[Center localization error in simulated data]{Center localization
+    error.
       Error is computed for various blur angles over various scales.}
     \label{tab:blur_angle_center}
 \end{table}
@@ -475,7 +476,7 @@ they were the correct fiducials and not other objects in the scene.
     3 & 1102 & 10 &  62.4 & 92.74 \\ \cline{1-5}
     4 & 1081 & 11 &  60.3 & 93.54  \\ \cline{1-5}
   \end{tabularx}
-  \caption[Comparison of Recognition Rate: Real Data]{ 
+  \caption[Comparison of recognition rate on real data]{ 
   \label{tab:recognition_accuracy} Recognition rate of ARTag and proposed fiducials on real
     data captured through AR Drone. Each row shows analysis of a test
     dataset captured for our fiducial with different binary codes embedded in it.
