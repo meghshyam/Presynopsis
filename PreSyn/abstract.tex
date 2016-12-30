@@ -2,13 +2,13 @@
 \thispagestyle{empty}
 Digital imaging is being extensively used in almost all sectors in today's
 world. However, it is quite difficult to take good pictures from a handheld
-camera in some situations, e.g., inspection of nuclear reactors, dams etc. Recently, Unmanned
-Aerial Vehicles (UAV) have gained focus for imaging in such situations. A
+camera in some situations, e.g., inspection of nuclear reactors, dams etc. Recently, 
+for imaging in such situations Unmanned Aerial Vehicles (UAV) have gained focus. A
 quadcopter, or a quadrotor helicopter, is one of the unpiloted aerial vehicles
 that has great maneuverability and hovering ability. With its small size and
 agile maneuverability, quadcopter can be flown indoors as well as
-outdoors. Due to its ability to go to inaccessible areas e.g., terraces of
-high-rise buildings, hills, etc. and capturing high-quality images from the
+outdoors. Due to its ability to go to inaccessible areas (e.g., terraces of
+high-rise buildings, hills, etc.) and to capture high-quality images from the
 onboard camera, it has become popular in various applications such as search and
 rescue.
 
@@ -27,18 +27,18 @@ mosaicing techniques such as Adobe Photoshop. Second, if there are spaces with v
 or no ``features'' (e.g., textureless regions on a wall of a dam) or patterns
 repeated in a scene (e.g., modern art posters in an art exhibition), it is not possible for existing
 mosaicing techniques to construct a panorama accurately. The reason behind 
-the failure is, standard mosaicing techniques fully rely upon the matching
-algorithms to find appropriate matches between images. 
+the failure is the complete reliance of standard mosaicing techniques on the matching
+algorithm to find appropriate matches between images. 
 
 We have solved these two problems by leveraging information from the quadcopter.
-Our helper to solve these problems is, Inertial Measurement Unit (IMU),
-which is present on any quadcopter. The IMU can give us a reasonable estimate of
+Our helper to solve these problems is the (Inertial Measurement Unit (IMU) that
+is present on any quadcopter. The IMU can give us a reasonable estimate of
 the position from where each image is captured. We have developed an image selection
 algorithm which uses the positional data from calibrated IMU to discover optimal
 images encompassing the input scene. Standard stitchers match each image
 with every other image for finding suitable pairs before stitching them
 together. However, as we arrange selected images into rectangular grid
-according to their position, we just need to match images which are present in
+according to their positions, we just need to match images which are present in
 the 8-neighborhood of a given image.
 
 If there are vacant spaces in an input scene we will get multiple mini-panoramas
@@ -50,14 +50,14 @@ is demonstrated on a number of input sequences that cannot be mosaiced by existi
 Though we are successful in mosaicing an input scene spread over a single planar
 surface, in the real world, we will encounter mainly multiplanar and curved
 surfaces. Manually navigating the quadcopter around such surfaces is very
-tedious as well as not effective. We have presented a method for autonomous
+tedious as well as ineffective. We have presented a method for autonomous
 navigation of quadcopter for imaging large multiplanar surfaces. The method
 uses Parallel Tracking and Mapping (PTAM) based approach to create an 
 approximate sparse 3D map of the input scene which will be used to fit
 multiplanar bounded regions. Later, the positions to image each bounded region
 (with unique normal) independently are determined and quadcopter is
 autonomously maneuvered along those positions to image the area specified by
-the user. The goal is to create the ``unrolled'' view of the input scene where we
+the user. The goal is to create an ``unrolled'' view of the input scene where we
 get the output mosaic of the input scene as if it is present on a single plane.
 Hence, we have developed an algorithm which first creates a mosaic of each
 planar region using homography based stitching and later joins the mosaics of
@@ -67,7 +67,7 @@ of multiplanar surfaces.
 
 A quadcopter's limited battery is a major hurdle we experienced during
 the imaging of multiplanar scene. Typical quadcopter's battery sustains only for
-20-30 minutes which is not enough for imaging large scenes in single flight. We can use
+20-30 minutes which is not enough for imaging large scenes in a single flight. We can use
 multiple quadcopters for imaging large multiplanar surface to overcome the
 battery issues. However, we have to maintain collaboration among these
 quadcopters for efficient capture. Quadcopters have to keep track of each other

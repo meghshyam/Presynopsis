@@ -52,7 +52,7 @@ Hence, we cannot use it in uncontrolled environments.
 Parrot's ARDrone and Bebop are two reasonably priced (USD 350 and USD
 700 respectively) quadcopters having HD camera with resolution 1280 x 720
 pixels. Though it is lightweight (420 grams) compared to DJI Phantom 4
-(around 1.4kg) , it is robust enough to withstand outdoor conditions. It streams
+(around 1.4kg) , it is robust enough to withstand outdoor conditions. ARDrone streams
 a WiFi hotspot to which any computer can be connected. Parrot has also released SDK which is helpful to
 do interfacing with these quadcopters. When I had started work on
 quadcopters (in mid-2013), Parrot's Bebop was not available (which was released
@@ -64,17 +64,18 @@ research work presented in this thesis.
 %One of them is proper navigation and control of the drone, and another is
 %the analysis of images captured by the camera to understand the scene.
 
-Consider a case where  we are inspecting a dam for cracks. We need to ensure
+Consider a situation where  we are inspecting a dam for cracks. We need to ensure
 that all small cracks are detected along with their respective positions from
 the captured video. Manual inspection of videos is prone to (human) errors. 
 So we need to develop an efficient algorithm to process the video and output
 desirable representation of the input scene. One of the useful representations
 is a full panoramic view of the dam constructed from closeups of the patches. 
 
-However, large featureless regions of surfaces like a dam pose challenges to
-the use of homography based stitching to create the panorama. Hence, there is a
-requirement of a method which can incorporate additional information available from drone to do
-mosaicing of scenes with vacant spaces. 
+However, large textureless regions containing very few features, of surfaces 
+like a dam pose challenges to the use of homography based stitching to create 
+the panorama. Hence, there is a requirement of a method which can incorporate 
+additional information available from drone to do mosaicing of scenes with 
+featureless regions, i.e., vacant spaces. 
 
 We need to navigate the quadcopter smoothly to image large planar surfaces in
 order to get good quality images from closeup. Developed countries like the US
@@ -82,21 +83,21 @@ have been using military grade drones with superior technology which enables us 
 navigate a drone with point precision. But as these drones are very expensive,
 their use is limited in developing countries. Also, as these drones use the GPS
 for navigation, we cannot use them in indoor scenes. Even if the GPS signal is
-available, we cannot rely only on GPS for navigation of drones due to various
-reasons (GPS jamming, spurious GPS signals). We may think of navigating drone
-manually in such cases. However, it will be cumbersome and prone to human errors.
+available, we cannot rely only on GPS for navigation of drones due to reasons 
+like GPS jamming, spurious GPS signals. Although, we may think of navigating drone
+manually in such cases, it will be cumbersome and prone to human errors.
 Hence, there is need of developing a stable technique for autonomous navigation
-and control of drones in various scenarios.
+and control of drones in various scenarios to overcome the drawbacks.
 
-Imaging large planar surfaces using single quadcopter in one flight is not
-feasible due to battery constraints. In such cases, one may use multiple
+Imaging large planar surfaces using a single quadcopter in one flight is not
+always feasible due to battery constraints. In such cases, one may use multiple
 quadcopters in collaboration to complete the task. The robust identification of
 each quadcopter under motion is needed for using multiple quadcopters. Fiducial
 markers are generally used to robustly identify objects in the environment. But,
-current fiducials do not get detected under motion blur as they heavily depend on the
-detection of geometric patterns such as lines, corners, etc. Hence, there is a
-need of developing blur resilient fiducials which can be detected robustly under
-a heavy motion blur.
+current fiducials such as ARtag do not get detected under motion blur as these
+heavily depend on the detection of geometric patterns such as lines, corners, etc.
+The need of developing blur resilient fiducials which can be detected 
+robustly under a heavy motion blur arises.
 
 The problem of autonomous navigation of quadcopters to image multiplanar
 surfaces with correctly distinguishing each quadcopter with the help of blur
@@ -126,9 +127,9 @@ thesis, we deal with these steps by leveraging information available from a quad
 The challenges which make our problem interesting to solve are as follows. 
 \begin{itemize}
   \item \textbf{Imaging scenes orthographically from close range:}
-We need to image scenes in such a way that we can capture finer details
+We need to image scenes in such a way that we can capture fine details
 (e.g., cracks in structures like a dam, bridge, etc.). One such example is shown
-in Figure \ref{fig:orthographicView}. We need to take the photo
+in Figure \ref{fig:orthographicView}. In this example, we need to take the photo
 orthographically from close range in order to get the details of the pressure
 dial which are missing from the perspective view taken from the long range. The
 dimensions of the wall make it impossible to image it orthographically  using
@@ -151,21 +152,22 @@ being imaged.}
 \includegraphics[width=0.98\linewidth]{figures/vacantSpaces}
 \caption[Jigsaw Puzzle as a mosaicing problem]{Jigsaw Puzzle as a mosaicing
 problem. Individual pieces (Left) of a jigsaw puzzle can be thought of constituent images of mosaic. Due to featureless
-regions belonging to sea (shown in Middle), one may find it difficult to join
+regions belonging to the ocean (shown in Middle), one may find it difficult to join
 ``Americas'' with remaining continents as shown in (Right). We have to use
 our knowledge about geography to complete the puzzle.}
 \label{fig:vacantSpaces}
 \end{figure}
   
   \item \textbf{Vacant spaces and regions with confusing features:} 
-  Mosaicing a scene is similar to solving a jigsaw puzzle like one shown in
+  Mosaicing a scene is similar to solving a jigsaw puzzle like the one shown in
   Figure~\ref{fig:vacantSpaces} where individual pieces of puzzle can be
   thought of constituent images to create a full mosaic. We need to match pair
   of pieces to join them together similar to stitching algorithm which finds
   matches in two images for finding the relative position of one image with
-  another image. Blank pieces representing sea make such puzzles hard to solve, because
-   we have to match each and every suitable blank piece. We have to use
-   additional information (e.g., geography in the puzzle shown in
+  another image. Blank pieces representing the ocean make such puzzles hard to solve, because
+   we have to match each and every suitable blank piece. Similarly, images containing very
+   less features or confusing features are difficult to match. Here, we have to use
+   additional positional information (e.g., geography in the puzzle shown in
    Figure~\ref{fig:vacantSpaces}) to join different parts separated by vacant
    spaces together.
   
@@ -195,8 +197,8 @@ When individual portions are captured by a quadcopter, how does one create the c
 \centering
 \includegraphics[width=0.98\linewidth]{figures/vacantSpacesExample}
  \caption[Problem of mosaicing scene with vacant spaces using Adobe
- Photoshop]{Is Mosaicing problem solved? Standard stitchers such as Adobe Photoshop cannot stitch images which have no or very little features in
- common, such as images with huge vacant spaces.}
+ Photoshop]{Is Mosaicing problem solved? Standard stitchers such as Adobe Photoshop cannot stitch
+ images which have no or very little features in  common, such as images with huge vacant spaces.}
 \label{fig:vacantSpacesExample}
 \end{figure}
  
@@ -247,7 +249,7 @@ features from those images.}
   regions. Also, these methods have not considered the validity of boundaries of
   planar regions to  filter noisy points appropriately. As a result, such noisy
   points get clustered into wrong models, extending boundaries of planar
-  regions incorrectly. Hence there is a need for a method to accurately estimate
+  regions incorrectly. Hence, there is a need for a method to accurately estimate
   multiplanar bounded regions in real-time.
   
   \item \textbf{Identification of a quadcopter under motion:}
@@ -257,8 +259,8 @@ features from those images.}
   ARTag on the quadcopter to keep the track, such fiducials are not detected
   due to motion blur. Figure \ref{fig:ARTagBlur} demonstrates the problem in
   detection of ARTag under motion blur. Figure \ref{fig:ARTagBlur} shows
-  that though ARTags get detected (indicated by green rectangles) when there
-  is no blur in captured images, when there is significant amount of blur in the
+  that though ARTags get detected (indicated by green rectangles) in the absence of blur 
+  in captured images, but when there is significant amount of blur in the
   captured images, it is not possible to detect ARTag. The reason behind this is
   that detection of fiducials such as ARTag is based on the detection of
   geometric features e.g., lines, corners, etc.
@@ -292,7 +294,7 @@ presence of motion blur, even from oblique angles.}
 \label{fig:contributions}
 \end{figure}
 
-As shown in Figure \ref{fig:contributions}, we develop an integrated solution to
+As shown in Figure \ref{fig:contributions}, we have developed an integrated solution to
 explore scenes spread over single or multiplanar scenes through quadcopter. To
 the best of our knowledge, we are the first to use quadcopter for:
 \begin{itemize}
@@ -420,7 +422,7 @@ mosaicing output as shown in the Figure~\ref{fig:multiplanar_result} (Bottom).
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.98\linewidth]{figures/multiplanar/convexResult}
-	\caption[Result: Imaging Convex Surface ]{The exhibition of Indian
+	\caption[Result: Imaging Convex Surface ]{The exhibition of 
 	temple paintings arranged in convex fashion as shown in the long range photograph (top-left). Note that we
 cannot cover all paintings with enough details simultaneously. We have selected
 the area to be imaged as shown in GUI for area selection (top-right).
