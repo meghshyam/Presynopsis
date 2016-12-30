@@ -5,19 +5,19 @@ increasingly used in aerial
 surveillance~\cite{dronesurvey1, dronesurvey3}, transporting
 medicines~\cite{dronedelivery1,dronedelivery2}, photography~\cite{dronephoto1,
 dronephoto2, dronephoto3}, archeology~\cite{dronearchaeology} etc.
-Due to their ability to go to inaccessible areas e.g., terraces of high-rise
-buildings, hills, etc., these are indispensable for search and rescue
+Due to their ability to go to inaccessible areas, e.g., terraces of high-rise
+buildings, hills, etc., they are indispensable for search and rescue
 operations. Drones have reportedly been used in search and rescue operation in
-flood-hit areas in Uttarakhand in 2013. These have also been used for military
-purposes e.g., surveillance to restrict infiltration in border
+flood-hit areas in Uttarakhand in 2013. They have also been used for military
+purposes, e.g., surveillance to restrict infiltration in border
 areas~\cite{dronesurvey2}.
 
-Drones may be classified into two types: those which can hover (e.g.
+Drones may be classified into two types: those which can hover (e.g.,
 quadcopters, octocopters, etc.), those which cannot (mainly military drones
-used for surveillance, attack etc.). We are interested in the first type due
+used for surveillance, attack, etc.). We are interested in the first type due
 to their ability to capture still photographs and videos. Such drones enable us
 to do close inspection which is required in many applications. Currently, in the market variety of
-quadcopters are available from USD 100 to USD 3000. Some of the models are shown
+quadcopters are available from USD 100 to USD 3000. Some models are shown
 in Figure~\ref{fig:quadcopters}.
 Each one has its own specialty. However, for autonomous navigation, we require 
 three characteristics. First, it should have a camera with good resolution (at
@@ -55,8 +55,9 @@ pixels. Though it is lightweight (420 grams) compared to DJI Phantom 4
 (around 1.4kg) , it is robust enough to withstand outdoor conditions. It streams
 a WiFi hotspot to which any computer can be connected. Parrot has also released SDK which is helpful to
 do interfacing with these quadcopters. When I had started work on
-quadcopters (in mid 2013), Parrot's Bebop was not available (which was released
-only in the end of 2015), I have used Parrot's ARDrone 2.0.
+quadcopters (in mid-2013), Parrot's Bebop was not available (which was released
+only in the end of 2015). Hence, I have used Parrot's ARDrone 2.0 for my
+research work presented in this thesis.
 
 \section{Motivation}
 %There are two main challenges in using drones for various applications.
@@ -159,10 +160,10 @@ our knowledge about geography to complete the puzzle.}
   \item \textbf{Vacant spaces and regions with confusing features:} 
   Mosaicing a scene is similar to solving a jigsaw puzzle like one shown in
   Figure~\ref{fig:vacantSpaces} where individual pieces of puzzle can be
-  thought of constituent images to create full mosaic. We need to match pair of
-  pieces to join them together similar to stitching algorithm which finds
-  matches in two images for finding relative position of one image with another
-  image. Blank pieces representing sea make such puzzles hard to solve, because
+  thought of constituent images to create a full mosaic. We need to match pair
+  of pieces to join them together similar to stitching algorithm which finds
+  matches in two images for finding the relative position of one image with
+  another image. Blank pieces representing sea make such puzzles hard to solve, because
    we have to match each and every suitable blank piece. We have to use
    additional information (e.g., geography in the puzzle shown in
    Figure~\ref{fig:vacantSpaces}) to join different parts separated by vacant
@@ -217,7 +218,7 @@ features from those images.}
   Inexpensive quadcopters like Parrot's ARDrone are very agile and can do
   several maneuvers swiftly. However, controlling it to image large planar
   regions smoothly by keeping a constant distance from the imaging plane is very
-  difficult because of tendancy of quadcopter to drift from its desired
+  difficult because of tendency of quadcopter to drift from its desired
   position. Also, manual control of quadcopter is a very laborious job.
   Hence, there is need of a mechanism for autonomous navigation of quadcopter to image
   the desired area. Many people use GPS for localizing quadcopter and navigating
@@ -233,7 +234,7 @@ features from those images.}
   cameras on top of a quadcopter. The Structure from Motion (SfM) techniques can
   build such a 3D map but due to the real-time requirement, we cannot use such
   techniques. Though Engel et al.~\cite{engel} have developed a method to
-  create a 3D map for camera based navigation of a quadcopter, it is not precise
+  create a 3D map for camera-based navigation of a quadcopter, it is not precise
   due to inaccuracies in scale. So, we need a
   robust mechanism to build a scale accurate 3D map in real-time.
   
@@ -447,7 +448,7 @@ overview of our fiducial detection algorithm.
 
 A single quadcopter is not sufficient for imaging large multiplanar scenes due
 to battery constraints. Instead, we may use multiple quadcopters in
-collaboration for imaging multiplanar scenes. In such cases we have to identify
+collaboration for imaging multiplanar scenes. In such cases, we have to identify
 each quadcopter uniquely for accurate collaboration among multiple quadcopters. 
 
 Generally, fiducial markers such as ARTag~\cite{Fiala05} are used to identify

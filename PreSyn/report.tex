@@ -1,6 +1,6 @@
 %%This is a very basic article template.
 %%There is just one section and two subsections.
-\documentclass[12pt]{book}
+\documentclass[12pt, oneside]{book}
 \usepackage{iitbtitle}
 \usepackage[font={small,it}]{caption}
 \usepackage{textcomp}
@@ -23,6 +23,11 @@
 \usepackage{nccmath}
 \usepackage{textcomp}
 \usepackage{mathtools}
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\makeatletter
+\patchcmd{\@makechapterhead}{\vspace*{50\p@}}{}{}{}% Removes space above \chapter head
+\patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{}{}{}% Removes space above \chapter* head
+\makeatother
 \usepackage[pagebackref=true,breaklinks=true,colorlinks,bookmarks=false]{hyperref}
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 \setlength{\floatsep}{20pt plus 2pt minus 2pt}
@@ -41,8 +46,6 @@
 \DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
 \def\etal{\emph{et al}\onedot}
 \begin{document}
-
-
 %\baselineskip 20pt
 %The definitions
 \def\title{Exploration of Multiplanar Scenes through Autonomous Navigation of
@@ -54,8 +57,14 @@ Quadcopter} \def\what{Pre-Synospis Seminar Report}
 \titlpage
 \def\bsq{\begin{flushright} $\blacksquare$\\ \end{flushright}}
 \def\tab{\hspace{5mm}}
-
 \pagenumbering{roman}
+\chapter*{Acknowledgements}
+I express deep and sincere gratitude to Prof. Sharat Chandran and Prof.
+Michael Brown for providing constant direction and guidance.  I take this
+opportunity to thank Mr. Anirudh Vemula for his help in path planning work. I
+am also thankful to Mr.Sona Praneeth Akula for his help in multiple planes
+detection work. I am indebted to him for his help in data collection for the
+project.
 \include{abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 \tableofcontents
